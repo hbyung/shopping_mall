@@ -1,7 +1,7 @@
 spring:
 
   datasource:
-    url: jdbc:mysql://13.209.207.232:3306/shoppingMall?serverTimezone=Asia/Seoul
+    url: jdbc:mysql://13.125.180.49:3306/shoppingMall?serverTimezone=Asia/Seoul
     username: scott
     password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -54,7 +54,7 @@ spring:
 
 
   server:
-    adress: 13.125.180.49
+    adress: 172.31.36.9
     port: 8080
     servlet:
       session:
