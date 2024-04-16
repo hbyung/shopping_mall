@@ -54,7 +54,7 @@ spring:
 
 
   server:
-    adress: 172.31.33.68
+    adress: 13.125.180.49
     port: 8080
     servlet:
       session:
