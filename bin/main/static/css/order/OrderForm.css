@@ -1,0 +1,113 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+.allform{
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.logo {
+    margin-top: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #000;
+
+}
+
+.logo i {
+    color: #2E9AFE;
+    font-size: 30px;
+}
+
+.logo a {
+    text-decoration: none;
+    font-size: 30px;
+    color: #000;
+    font-family: "Croissant One", serif;
+}
+
+h2 {
+    padding-top: ;
+    border-bottom: 3px solid;
+    padding-bottom: 10px;
+ }
+
+h3 {
+    border-bottom: 1px solid;
+    padding-bottom: 10px;
+}
+
+.buyerinfo {
+    padding-top: 5px;
+}
+
+.buyerinfo table {
+    border-collapse: collapse;
+    border-top: 1px solid #E6E6E6;
+}
+
+.buyerinfo table tr td {
+    border-bottom: 1px solid #F2F2F2;
+    padding: 8px;
+}
+
+
+.buyerinfo table tr td:nth-child(1) {
+    width: 200px;
+    background: #F2F2F2;
+}
+
+.buyerinfo table tr td:nth-child(2) {
+    width: 800px;
+}
+
+.Recipient input[type=text] {
+
+    padding: 8px 0;
+    margin: 3px 0;
+}
+
+.Recipient input[type=button] {
+    background: #FAFAFA;
+    padding: 8px 0;
+    width: 120px;
+    border: 1px solid #000;
+}
+
+.Recipient input[type=button]:hover {
+    background: #F2F2F2;
+}
+
+.payment {
+    text-align: center;
+    margin-top: 20px;
+    padding-bottom: 100px;
+}
+
+.payment button {
+    border: 1px solid #fff;    
+}
+
+.payment button:nth-child(1) {
+    border: 1px solid #FA5882; 
+    background-color: #fff;
+    color:  #FA5882; 
+    padding: 13px 0;
+    width: 120px;
+}
+
+.payment button:nth-child(1):hover {
+    background: #F6CED8;
+}
+
+.payment button:nth-child(2) {
+    border: 1px solid #2E9AFE;
+    background-color: #fff;
+    color: #2E9AFE;
+    padding: 13px 0;
+    width: 120px;
+}
+
+.payment button:nth-child(2):hover {
+    background: #CED8F6;
+}

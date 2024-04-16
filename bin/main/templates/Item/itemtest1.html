@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>구매 상품</title>
+  <link rel="stylesheet" href="../../static/css/item/itemdetail.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+  <script src="../../static/js/item/itemdetail.js"></script>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+  <!-- Bootstrap icons-->
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="../../static/css/home.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="../../static/js/home.js"></script>
+  <script src="../../static/js/main.js" defer></script>
+  <link rel="stylesheet" href="../../static/css/swiper/swiper1.css" />
+  <script
+          src="https://kit.fontawesome.com/f632e65da8.js" crossorigin="anonymous"
+  ></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link
+          href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+          rel="stylesheet"
+  />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</head>
+<body>
+<section class="sidebar">
+  <div class="nav-header">
+    <p class="logo">Tivotal</p>
+    <i class="bx bx-menu-alt-right btn-menu"></i>
+  </div>
+  <ul class="nav-links">
+    <li>
+      <a href="#"><i class="bx bx-search search-btn"></i></a>
+      <input type="text" placeholder="search..." />
+      <span class="tooltip">Search</span>
+    </li>
+    <li>
+      <a href="#">
+        <i class="bx bx-home-alt-2"></i>
+        <span class="title">Home</span>
+      </a>
+      <span class="tooltip">Home</span>
+    </li>
+    <li>
+      <div>
+        <a href="#" class="link_icon">
+          <i class="bx bx-phone-call"></i>
+          <span class="title">Calls</span>
+        </a>
+      </div>
+      <span class="tooltip">
+                    <ul>
+                        <li><a href="#">음식</a></li>
+                        <li><a href="#">전자제품</a></li>
+                        <li><a href="#">의류</a></li>
+                        <li><a href="#">가전</a></li>
+                    </ul>
+                </span>
+    </li>
+    <li>
+      <a href="#">
+        <i class="bx bx-bookmark"></i>
+        <span class="title">Bookmarks</span>
+      </a>
+      <span class="tooltip">Bookmarks</span>
+    </li>
+    <li>
+      <a href="#">
+        <i class="bx bx-wallet-alt"></i>
+        <span class="title">Wallet</span>
+      </a>
+      <span class="tooltip">Wallet</span>
+    </li>
+    <li>
+      <a href="#">
+        <i class="bx bxs-devices"></i>
+        <span class="title">Devices</span>
+      </a>
+      <span class="tooltip">Devices</span>
+    </li>
+    <li>
+      <a href="#">
+        <i class="bx bx-cog"></i>
+        <span class="title">Setting</span>
+      </a>
+      <span class="tooltip">Setting</span>
+    </li>
+  </ul>
+  <div class="theme-wrapper">
+    <i class="bx bxs-moon theme-icon"></i>
+    <p>Dark Theme</p>
+    <div class="theme-btn">
+      <span class="theme-ball"></span>
+    </div>
+  </div>
+</section>
+<section class="home">
+
+  <nav class="shppingNavbar">
+    <div class="navbar_logo">
+      <i class="fa-brands fa-accusoft"></i>
+      <a href="/">Copang</a>
+    </div>
+    <div class="search-box" id="ItemSearch" th:object="${ItemListSearch}" >
+      <form action="/ItemList" method="get">
+        <select th:field="*{category}">
+          <option th:each="category : ${category}"
+                  th:value="${category}"
+                  th:text="${category}"></option>
+        </select>
+        <input type="text" placeholder="검색어를 입력해주세요." th:field="*{name}">
+        <button type="submit"  class="search-icon">
+          <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+        </button>
+      </form>
+    </div>
+    <div class="navbar_icons">
+      <ul class="icons1" th:if="!${#strings.equals(session.username, 'admin')}">
+        <li id="cart"><a href="/cartList"><i class="fa-solid fa-cart-shopping fa-lg"></i></a></li>
+        <li class="cartSelect"><label for="cart">장바구니</label></li>
+        <div class="sub_menu1">
+          <li><a href="#">목록1</a></li>
+          <li><a href="#">목록1</a></li>
+          <li><a href="#">목록1</a></li>
+          <li><a href="#">목록1</a></li>
+        </div>
+      </ul>
+      <ul class="icons1" th:if="${#strings.equals(session.username, 'admin')}">
+        <li id="cart"><a href="/admin/order"><i class="fa-solid fa-cart-shopping fa-lg"></i></a></li>
+        <li class="cartSelect"><label for="cart">상품등록</label></li>
+        <div class="sub_menu1">
+          <li><a href="/admin/order">상품등록</a></li>
+          <li><a href="/admin/orderList">상품목록</a></li>
+          <li><a href="/cartList">장바구니</a></li>
+        </div>
+      </ul>
+      <ul th:if="!${session.username}" class="icons2">
+        <li id="cart1"><a href="#"><i class="fa-solid fa-person fa-lg"></i></a></li>
+        <li class="cartSelect1"><label for="cart1">회원관리</label></li>
+        <div class="sub_menu2">
+          <li><a href="/login">로그인</a></li>
+          <li><a href="/Member/new">회원가입</a></li>
+        </div>
+      </ul>
+      <ul th:if="${session.username}" class="icons2">
+        <li id="cart1"><a href="#"><i class="fa-solid fa-person fa-lg"></i></a></li>
+        <li class="cartSelect1"><label for="cart1" th:text="${session.username}">님</label></li>
+        <div class="sub_menu2">
+          <li><a href="/orders">주문목록</a></li>
+          <li><a href="#">내정보</a></li>
+          <li><a href="/logout">로그아웃</a></li>
+        </div>
+      </ul>
+    </div>
+
+    <a href="#" class="navbar_toogleBtn">
+      <i class="fa-solid fa-bars"></i>
+    </a>
+
+    <a href="#" class="search-icons">
+      <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    </a>
+  </nav>
+<main id="order_wrap" >
+  <div class="left">
+    <img th:src="@{${item.mainFilePath}}"  alt="no img">
+  </div>
+  <div class="right">
+    <form method="get" action="/order" id="test1">
+      <div class="top">
+        <h1 th:text="${item.name}">뉴발 슬리퍼</h1>
+        <p th:text="${item.itemTime}">2024-04-02</p>
+        <dl>
+          <dt>판매가격</dt>
+          <dd class="price" th:text="${item.price}"></dd>
+          <dt>적립금</dt>
+          <dd>1%</dd>
+          <dt>원산지</dt>
+          <dd>대한민국</dd>
+        </dl>
+
+        <div class="number">
+          <p class="order_name"> 앵무세 인테리어 포스터</p>
+          <div class="order_number">
+            <input type="hidden" name="itemId" id="itemId" th:value="${item.id}">
+            <input type="hidden" name="totalprice" id="allprice" value="">
+            <input type="number" name="num" id="num" value="1" min="1">
+            <input type="text"  id="totalprice" th:value="${item.price}">원
+          </div>
+        </div>
+        <div class="total_price">
+          <p>총 상품 금액</p>
+          <p class="result_price" th:text="${item.price}+'원'"></p>
+        </div>
+      </div>
+      <div class="bottom">
+        <button type="submit" id="order_btn">주문하기</button>
+        <button type="button" id="cart_btn" onclick="carts()">장바구니</button>
+        <button type="button" id="like_btn" onclick="requestPay()">카카오페이</button>
+      </div>
+    </form>
+  </div>
+</main>
+<div class="other_menu">
+  <button id="buttonA" onclick="showContent('A')">상품상세</button>
+  <button id="buttonB" onclick="showContent('B')">상품평</button>
+  <button id="buttonC" onclick="showContent('C')">상품문의</button>
+  <button id="buttonD" onclick="showContent('D')">배송/교환/반품 안내</button>
+
+  <div id="contentA" th:each="item :${item}">
+    <h2>필수 표기정보</h2>
+    <table>
+      <tr>
+        <td>품명 및 모델명</td>
+        <td>상품 상세페이지 참조</td>
+        <td>KC 인증정보</td>
+        <td>상품 상세페이지 참조</td>
+      </tr>
+      <tr>
+        <td>정격전압, 소비전력</td>
+        <td>상품 상세페이지 참조</td>
+        <td>출시년월</td>
+        <td>상품 상세페이지 참조</td>
+      </tr>
+      <tr>
+        <td>제조자(수입자)</td>
+        <td>상품 상세페이지 참조</td>
+        <td>제조국</td>
+        <td>상품 상세페이지 참조</td>
+      </tr>
+    </table>
+    <ul class="subFile">
+      <li th:each="filePath :${item.filePath}"><img th:src="@{${filePath}}"></li>
+    </ul>
+
+  </div>
+
+  <div id="contentB">
+    <h2>상품평</h2>
+    <div>
+      <textarea name="Product Review" id="Product Review" cols="80" rows="6"></textarea>
+      <button type="button" onclick="comment()">등록</button>
+    </div>
+    <table>
+      <tr>
+        <td>작성자</td>
+      </tr>
+      <tr>
+        <td>내용 어쩌구</td>
+      </tr>
+    </table>
+  </div>
+
+  <div id="contentC">
+    <h2>상품문의</h2>
+    <p>C 버튼 클릭 시 display:block</p>
+  </div>
+
+  <div id="contentD">
+    <h2>배송/교환/반품 안내</h2>
+    <table>
+      <tr>
+        <td>배송방법</td>
+        <td>순차배송</td>
+        <td rowspan="2">배송비</td>
+        <td rowspan="2">
+          <ul>
+            <li>무료배송</li>
+            <li>-도서산간 추가 배송비</li>
+            <li>-제주 지역: 4.000원</li>
+            <li>-도서산간 지역: 4.000원</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>배송사</td>
+        <td>cj대한통운</td>
+      </tr>
+      <tr>
+        <td>묶음배송 여부</td>
+        <td colspan="3">가능</td>
+      </tr>
+      <tr>
+        <td>배송기간</td>
+        <td colspan="3">
+          <ul>
+            <li>- 도서산간 지역 등은 배송에 3-5일이 더 소요될 수 있습니다.</li>
+            <li>- 천재지변, 물량 수급 변동 등 예외적인 사유 발생시, 다소 지연될 수 있는 점 양해 부탁드립니다.</li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+  <!-- Footer-->
+  <footer class="py-5 bg-dark">
+    <div class="container" style="text-align:center;"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+  </footer>
+</section>
+</section>
+<button onclick="backToTop()" id="btn-back-to-top" title="위로 가기">Top</button>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="/js/scripts.js"></script>
+<script src="/js/custom.js"></script>
+</body>
+</html>

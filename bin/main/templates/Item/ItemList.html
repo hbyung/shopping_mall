@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <meta charset="UTF-8">
+    <title>목록페이지</title>
+</head>
+<head>
+    <link href="/css/home.css" rel="stylesheet" />
+    <script src="/js/item/itemList.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script
+    src="https://kit.fontawesome.com/f632e65da8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div th:replace="fragments/bodyHeader.html :: bodyHeader" />
+    <section class="favorite-items">
+
+        <div>
+        <ul class="items_list">
+            <li th:each="item :${items}">
+                <a href="#" th:href="@{/user/{id}/detail(id = ${item.id})}">
+                    <ul>
+                        <li><img th:src="@{${item.mainFilePath}}"></li>
+                        <li><a href="#" th:href="@{/item/{id}/detail(id = ${item.id})}"  th:text="${#strings.abbreviate(item.name,10)}"></a></li>
+                        <li class="exprice" th:text="${item.price+'원'}"></li>
+                        <li><button class="buttonB"><i class="fa-solid fa-cart-plus"></i></button></li>
+                        <input type="hidden" name="itemId" th:value="${item.id}">
+                    </ul>
+                </a>
+            </li>
+        </ul>
+      </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+            <ul class="pagination">
+                <li class="page-item" th:classappend="${1 == items.pageable.pageNumber + 1} ? 'disabled'">
+                    <a class="page-link" href="#" th:href="@{/ItemList(page=${items.pageable.pageNumber - 1},category=${param.category}, name=${param.name})}">이전</a></li>
+                <li class="page-item" th:classappend="${i == items.pageable.pageNumber + 1} ? 'disabled'"  th:each="i : ${#numbers.sequence(startPage, endPage)}">
+                    <a class="page-link" href="#" th:href="@{/ItemList(page=${i - 1},category=${param.category}, name=${param.name})}" th:text="${i}">1</a></li>
+                <li class="page-item"  th:classappend="${items.totalPages == items.pageable.pageNumber + 1} ? 'disabled'">
+                    <a class="page-link" th:if="!${endPage == 1}" href="#" th:href="@{/ItemList(page=${items.pageable.pageNumber + 1},category=${param.category}, name=${param.name})}">다음</a></li>
+                <li class="page-item disabled" th:if="${endPage == 1}"  th:classappend="${items.totalPages == items.pageable.pageNumber + 1} ? 'disabled'">
+                    <a class="page-link" href="#" th:href="@{/ItemList(page=${items.pageable.pageNumber + 1},category=${param.category}, name=${param.name})}">다음</a></li>
+            </ul>
+            </ul>
+        </nav>
+        <input type="hidden" value="${items.pageable.pageNumber}" name="pageNum">
+    </section>
+<div th:replace="fragments/footer :: footer" />
+</body>
+</html>

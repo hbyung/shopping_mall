@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="fragments/header :: header">
+</head>
+
+<head>
+</head>
+<body>
+<div th:replace="fragments/bodyHeader.html :: bodyHeader" />
+
+    <div class="swiper swheader">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <a href="#"><img src="/img/가나.jpg"></a>
+          </div>
+          <div class="swiper-slide">
+            <img src="/img/밥.jpg">
+          </div>
+          <div class="swiper-slide">
+            <img src="/img/화장지.png">
+          </div>
+      
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+      
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+
+    <!-- Section-->
+    <section class="favorite-items">
+        <div class="items-tab">
+            <i class="fa-solid fa-cart-shopping fa-lg"></i>
+            <h4>오늘의 발견</h4>   
+        </div>
+        <h3> 좋아할만한 카테고리 상품</h3>    
+      <div>
+        <ul class="items_list">
+            <li th:each="item : ${five}">
+                <a href="#" th:href="@{/user/{id}/detail(id = ${item.id})}">
+                    <ul>
+                        <li><img th:src="@{${item.mainFilePath}}"></li>
+                        <li><a href="#" th:href="@{/item/{id}/detail(id = ${item.id})}" th:text="${#strings.abbreviate(item.name,15)}"></a></li>
+                        <li class="price1" th:text="${item.price+'원'}"></li>
+                        <li><button type="button" class="buttonA"><i class="fa-solid fa-cart-plus"></i></button></li>
+                        <input type="hidden" name="itemId" th:value="${item.id}">
+                    </ul>
+                </a>
+            </li>
+        </ul>
+      </div>
+    </section>
+    <section class="categoryBook">
+        <div class="h3hearder">
+            <i class="fa-solid fa-truck-fast fa-2x"></i>
+            <h3>카테고리 추천 광고상품</h3>
+        </div>
+        <div class="ReProduct">
+            <div class="repcheader">
+                <div>
+                    <p>책</p>
+                    <a href="/ItemList?category=책">바로가기</a>
+                </div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                        <div class="swiper-slide" th:each="item : ${book}">
+                            <a href="#" th:href="@{/user/{id}/detail(id = ${item.id})}">
+                                <ul style="list-style: none;">
+                                    <li><img th:src="@{${item.mainFilePath}}"></li>
+                                    <li><a href="#" th:href="@{/item/{id}/detail(id = ${item.id})}" th:text="${#strings.abbreviate(item.name,15)}"></a></li>
+                                    <li class="price1" th:text="${item.price+'원'}"></li>
+                                    <li><button type="button" class="buttonA"><i class="fa-solid fa-cart-plus"></i></button></li>
+                                    <input type="hidden" name="itemId" th:value="${item.id}">
+                                </ul>
+                            </a>
+                        </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                </div>
+        </div>
+    </section>
+    <section class="categoryFood">
+            <div class="h3hearder">
+                <i class="fa-solid fa-bowl-food fa-2x"></i>
+                <h3>카테고리 추천 광고상품</h3>
+            </div>
+            <div class="ReProduct">
+                <div class="repcheader">
+                    <div>
+                        <p>식품</p>
+                        <a href="/ItemList?category=음식">바로가기</a>
+                    </div>
+                </div>
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" th:each="item : ${food}">
+                            <a href="#" th:href="@{/user/{id}/detail(id = ${item.id})}">
+                                <ul style="list-style: none;">
+                                    <li><img th:src="@{${item.mainFilePath}}"></li>
+                                    <li><a href="#" th:href="@{/item/{id}/detail(id = ${item.id})}" th:text="${#strings.abbreviate(item.name,15)}"></a></li>
+                                    <li class="price1" th:text="${item.price+'원'}"></li>
+                                    <li><button type="button" class="buttonA"><i class="fa-solid fa-cart-plus"></i></button></li>
+                                    <input type="hidden" name="itemId" th:value="${item.id}">
+                                </ul>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+    </section>
+
+    <section class="categoryMachine">
+            <div class="h3hearder">
+                <i class="fa-solid fa-desktop fa-2x"></i>
+                <h3>카테고리 추천 광고상품</h3>
+            </div>
+            <div class="ReProduct">
+                <div class="repcheader">
+                    <div>
+                        <p>전자</p>
+                        <a href="/ItemList?category=전자">바로가기</a>
+                    </div>
+                </div>
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" th:each="item : ${machine}">
+                            <a href="#" th:href="@{/user/{id}/detail(id = ${item.id})}">
+                                <ul style="list-style: none;">
+                                    <li><img th:src="@{${item.mainFilePath}}"></li>
+                                    <li><a href="#" th:href="@{/item/{id}/detail(id = ${item.id})}" th:text="${#strings.abbreviate(item.name,15)}"></a></li>
+                                    <li class="price1" th:text="${item.price+'원'}"></li>
+                                    <li><button type="button" class="buttonA"><i class="fa-solid fa-cart-plus"></i></button></li>
+                                    <input type="hidden" name="itemId" th:value="${item.id}">
+                                </ul>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                    </div>
+            </div>
+    </section>
+    <section class="categoryShoes">
+        <div class="h3hearder">
+            <i class="fa-solid fa-shoe-prints fa-2x"></i>
+            <h3>카테고리 추천 광고상품</h3>
+        </div>
+        <div class="ReProduct">
+            <div class="repcheader">
+                <div>
+                    <p>신발</p>
+                    <a href="/ItemList?category=신발">바로가기</a>
+                </div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" th:each="item : ${shoes}">
+                        <a href="#" th:href="@{/user/{id}/detail(id = ${item.id})}">
+                            <ul style="list-style: none;">
+                                <li><img th:src="@{${item.mainFilePath}}"></li>
+                                <li><a href="#" th:href="@{/item/{id}/detail(id = ${item.id})}" th:text="${#strings.abbreviate(item.name,15)}"></a></li>
+                                <li class="price1" th:text="${item.price+'원'}"></li>
+                                <li><button type="button" class="buttonA"><i class="fa-solid fa-cart-plus"></i></button></li>
+                                <input type="hidden" name="itemId" th:value="${item.id}">
+                            </ul>
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                </div>
+        </div>
+    </section>
+    </div>
+</section>
+
+    &nbsp;
+<div th:replace="fragments/footer :: footer" />
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/order/OrderForm.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+    <script src="/js/cart/CartOrderForm.js"></script>
+    <script
+    src="https://kit.fontawesome.com/f632e65da8.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Croissant+One&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="allform">
+    <div class="logo">
+        <i class="fa-brands fa-accusoft"></i>ㅊ
+        <a href="#">Copang</a>
+    </div>
+    <h2>주문/결제</h2>
+    <div class="buyerinfo">
+        <h3>구매자 정보</h3>
+        <table>
+            <tr>
+                <td>이름</td>
+                <td th:text="${member.username}"></td>
+            </tr>
+            <tr>
+                <td>이메일</td>
+                <td th:text="${member.email}"></td>
+            </tr>
+        </table>
+    </div>
+    <form action="/cart/orders" method="post" id="orderButton">
+    <div class="Recipient">
+        <h3>받는사람 정보</h3>
+        <input type="text" id="postcode" name="postcode" placeholder="우편번호">
+        <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
+        <input type="text" id="address" name="address" placeholder="주소"><br>
+        <input type="text" id="detailAddress" name="detailAddress" placeholder="상세주소">
+        <input type="text" id="extraAddress" name="extraAddress" placeholder="참고항목">    
+    </div>    
+    
+    <div class="buyerinfo">
+        <h3>결제정보</h3>
+        <table th:each="carts: ${carts}">
+            <tr>
+                <td>상품명</td>
+                <td th:text="${carts.itemName}"></td>
+            </tr>
+            <tr>
+                <td>상품 가격</td>
+                <td th:text="${carts.itemPrice}+'원'"></td>
+            </tr>
+            <tr>
+                <td>수량</td>
+                <td th:text="${carts.number+''}"></td>
+            </tr>
+            <input type="hidden" name="memberId"  th:value="${member.id}">
+            <input type="hidden" name="memberName" id="memberName" th:value="${member.name}">
+            <input type="hidden" name="memberEmail" id="memberEmail" th:value="${member.email}">
+            <input type="hidden" name="memberPhone" id="memberPhone" th:value="${member.phone}">
+            <input type="hidden" name="itemPrice"  th:value="${carts.itemPrice}">
+            <input type="hidden" name="itemName" id="itemName" th:value="${carts.itemName}">
+            <input type="hidden" name="number" id="num" th:value="${carts.number}">
+            <input type="hidden" name="finalTotalPrice" id="orderPrice" th:value="${finalTotalPrice}">
+        </table>
+        <table>
+            <tr>
+                <td>총결제금액</td>
+                <td th:text="${finalTotalPrice+'원'}" class="finalTotalPrice"></td>
+            </tr>
+        </table>
+    </div>
+    </form>
+    <div class="payment">
+        <button onclick="history.back()">취소하기</button>
+        <button type="button" onclick = "requestPay()" >결제하기</button>
+    </div>
+</div>    
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</body>
+</html>

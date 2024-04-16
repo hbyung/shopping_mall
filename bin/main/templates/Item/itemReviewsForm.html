@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문의 등록</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+    <link href="/css/reviews/reviewsForm.css" rel="stylesheet">
+    <script src="/js/admin/adminOrderForm.js"></script>
+    <script
+            src="https://kit.fontawesome.com/f632e65da8.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Croissant+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gasoek+One&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Single+Day&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="orderForm">
+    <div class="logo">
+        <i class="fa-brands fa-accusoft"></i>
+        <a href="#">Copang</a>
+    </div>
+    <h3>문의 등록</h3>
+    <form class="layout" action="/user/reviewRequest" method="post" id="adminForm" enctype="multipart/form-data">
+        <table>
+            <input type="hidden" name="itemId" th:value="${itemId}">
+            <tr>
+                <td>작성자</td>
+                <td><input type="text" name="writer" th:value="${writer}"></td>
+            </tr>
+            <tr>
+
+            </tr>
+            <tr>
+                <td>내용</td>
+                <td><input type="text" name="content" ></td>
+            </tr>
+        </table>
+
+    </form>
+    <div class="submit">
+        <button type="submit" id="cancel_button" onclick="history.go(-1);">취소</button>
+        <button type="submit" onclick="document.getElementById('adminForm').submit();">등록</button>
+    </div>
+
+</body>
+</html>

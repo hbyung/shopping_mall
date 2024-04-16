@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>슬라이더</title>
+
+  <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <script src="https://code.jquery.com/jquery-migrate-3.4.1.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="../../static/css/swiper/swiper1.css" />
+  <script src="https://cdn.tiny.cloud/1/enlj8b85xhcdigel2fbrjmjzdjievkwz6l2vew98tcyipxet/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+</head>
+<body onbeforeunload="return myFunction()">
+  <script>
+
+function myFunction() {
+  return "Write something clever here...";
+}
+    
+tinymce.init({
+    language: 'ko_KR',
+    selector: '#basic-conf',
+    width: 800,
+    height: 500,
+    plugins: [
+      'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
+      'searchreplace', 'wordcount', 'visualblocks', 'code', 'fullscreen', 'insertdatetime', 'media',
+      'table', 'emoticons', 'template', 'help'
+    ],
+    toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | ' +
+      'bullist numlist outdent indent | link image | print preview media fullscreen | ' +
+      'forecolor backcolor emoticons | help',
+    menu: {
+      favs: { title: 'My Favorites', items: 'code visualaid | searchreplace | emoticons' }
+    },
+    menubar: 'favs file edit view insert format tools table help',
+    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }',
+    menubar: false,
+    setup: function(editor) {}
+ });
+  </script>
+<textarea id="basic-conf">
+  This editor uses the Basic configuration example.
+  </textarea>
+<script src="../../static/js/swiper.js" />
+</body>
+</html>
