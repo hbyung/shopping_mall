@@ -54,6 +54,8 @@ spring:
 
 
   server:
+    adress: 172.31.33.68
+    port: 8080
     servlet:
       session:
       timeout: 1800
