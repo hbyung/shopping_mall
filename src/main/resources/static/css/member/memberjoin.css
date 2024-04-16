@@ -1,0 +1,175 @@
+h1 {text-align: center; margin: 50px auto 30px;}
+h1 a {text-decoration-line: none; color: #666dd4; font-size: 50px;}
+main {width: 500px;margin: 0 auto;}
+main #MemberForm{ border-bottom: 1px solid #aaa; margin-bottom: 20px; padding-bottom: 20px;}
+main #MemberForm fieldset{ border: 0; padding: 0;}
+#login_input {
+    padding-left: 0;
+    margin: 0;
+}
+#login_input li {
+    list-style: none;
+}
+
+main #login_input .id_error {
+    color: #c7223d; padding: 4px; display: none; border: 0;
+}
+
+main #login_input .pw_error {
+    color: #c7223d; padding: 4px; display: none; border: 0;
+}
+
+main #login_input .name_error {
+    color: #c7223d; padding: 4px; display: none; border: 0;
+}
+
+main #login_input .phone_error {
+    color: #c7223d; padding: 4px; display: none; border: 0;
+}
+
+main #login_input li {
+    border: 1px solid #ccc; background: #fff;
+    display: flex; flex-flow: row nowrap;
+    margin-bottom: 10px;
+}
+
+main #MemberForm fieldset ul li span{
+    height: 0;
+}
+main #MemberForm fieldset ul li .id_bg{
+    border-right: 1px solid #ccc;
+    padding: 20px; width: 20px;
+    background-color: #f5f5f5;
+    position: relative;
+
+}
+
+main #MemberForm fieldset ul li .id_bg::after{
+    content: ''; display: block;
+    background-image: url(/assets/img/icon.svg);
+    background-position:0 0;
+    width: 21px; height: 21px;
+    position: absolute; left:18px; top:12px;
+
+}
+main #MemberForm fieldset ul li .pw_bg{
+    border-right: 1px solid #ccc;
+    padding: 20px; width: 20px;
+    background-color: #f5f5f5;
+    position: relative;
+}
+
+main #MemberForm fieldset ul li .pw_bg::after{
+    content: ''; display: block;
+    background-image: url(/assets/img/icon.svg);
+    background-position:-21px 0;
+    width: 21px; height: 21px;
+    position: absolute; left:18px; top:12px;
+
+}
+
+main #MemberForm fieldset ul li .repw_bg{
+    border-right: 1px solid #ccc;
+    padding: 20px; width: 20px;
+    background-color: #f5f5f5;
+    position: relative;
+}
+
+main #MemberForm fieldset ul li .repw_bg::after{
+    content: ''; display: block;
+    background-image: url(/assets/img/icon.svg);
+    background-position:-42px 0;
+    width: 21px; height: 21px;
+    position: absolute; left:18px; top:12px;
+
+}
+
+main #MemberForm fieldset ul li .name_bg{
+    border-right: 1px solid #ccc;
+    padding: 20px; width: 20px;
+    background-color: #f5f5f5;
+    position: relative;
+}
+
+main #MemberForm fieldset ul li .name_bg::after{
+    content: ''; display: block;
+    background-image: url(/assets/img/icon.svg);
+    background-position: 0 -20px;
+    width: 21px; height: 21px;
+    position: absolute; left:18px; top:12px;
+
+}
+
+main #MemberForm fieldset ul li .phone_bg{
+    border-right: 1px solid #ccc;
+    padding: 20px; width: 20px;
+    background-color: #f5f5f5;
+    position: relative;
+}
+
+main #MemberForm fieldset ul li .phone_bg::after{
+    content: ''; display: block;
+    background-image: url(/assets/img/icon.svg);
+    background-position:-20px -22px;
+    width: 21px; height: 21px;
+    position: absolute; left:18px; top:12px;
+
+}
+
+main #MemberForm fieldset ul li span input{
+    width: 400px; height: 35px; border: 0; padding-left: 5px;
+}
+
+main #MemberForm fieldset ul li span input::placeholder{
+   font-size: 0.95rem; color: #aaa;
+}
+main #MemberForm fieldset ul li span input{type=text} {}
+main #MemberForm fieldset ul li span input{type=password} {}
+
+main #MemberForm fieldset .btm {
+    display: flex;
+    padding: 15px 0; justify-content:space-between;
+
+}
+main #MemberForm fieldset .btm label{display: flex; align-items: center;}
+main #MemberForm fieldset .btm label input[name=login_v]{appearance:none;}
+main #MemberForm fieldset .btm label input[name=login_v] + span::before {
+    background-color: #fff;
+    border: 1px solid #aaa;
+    content: "";
+    margin-right: 5px;
+    width: 17px; height: 17px; 
+    background-image: url(/assets/img/icon.svg);
+    background-position: -65px -22px;
+    display: inline-block;
+    
+}
+main #MemberForm fieldset .btm label input[name=login_v]:checked + span::before {
+    background-position: -84px -21px;
+}
+
+main #MemberForm fieldset .btm .idpw_search{text-decoration-line: none;}
+main #MemberForm fieldset .btm .idpw_search::after{
+    content: '>'; display: inline-block;
+}
+
+main #login_btn {
+    border: 1px solid #aaa; color: #fff;
+    display: block; text-align: center; background-color: #0074e9; padding: 20px 0; width: 99%;
+    box-shadow:0 2px 0 #ccc;
+    text-decoration-line: none;
+}
+
+.pw_span{
+    font-size: 15px;
+    width: 400px; height: 60px; 
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 10px;
+    display: inline-block;
+
+}
+
+
+
+footer {color: #333; text-align: center; font-size:0.85rem; margin-top:20px;}

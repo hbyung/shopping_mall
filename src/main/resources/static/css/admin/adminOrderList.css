@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    
+}
+
+.semiheader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.semiheader div input {
+    width: 150px;
+    height: 35px;
+}
+
+.semiheader div button {
+    width: 50px;
+    height: 36px;
+    border: 0;
+    background: #000;
+    color: #fff;
+}
+
+.semiheader div button:hover {
+    background: #535353;
+}
+
+.orderList {
+    margin-top: 50px;
+    width: 900px;
+    height: 500px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.orderList table {
+    width: 900px;
+    border: 1px solid #E6E6E6;
+    border-collapse: collapse;
+    margin: 0 auto;
+    margin-top: 20px;
+
+}
+
+.orderList table td, .orderList table th {
+    border-bottom: 1px solid #000;
+    padding: 15px 0;
+    
+}
+
+.orderList table th {
+    background: #E0E6F8;
+    border-bottom: 2px solid #000;
+}
+
+.orderList table tr {
+    text-align: center;
+
+}
+
+.orderList table tr td:nth-child(7) {
+    padding: 0;
+    margin: 0;
+    width: 150px;
+
+}
+
+
+.orderList table tbody tr td img{
+    width: 60px;
+    height: 60px;
+}
+
+.orderList table tbody tr td:nth-child(7) a {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 35px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    margin-left: 20px;
+    background: #df4848;
+    color: #fff;
+    text-decoration: none;
+
+}
+
+.orderList table tbody tr td:nth-child(7) a:hover {
+    background: #f77c7c;
+}
+
+.itemOrder {
+    display: flex;
+    justify-content: right;
+    margin-top: 10px;
+    text-align: center;
+    align-items: center;
+}
+
+.itemOrder a {
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    background: #6b8ae9;
+    padding-top: 3px;
+    display: block;
+    width: 80px;
+    height: 30px;
+    font-size: 15px;
+}
+
+.itemOrder a:hover {
+    background: #aabae9;
+}
+
+.pagination {
+    margin-top: 20px;
+    justify-content: center;
+}
+
+

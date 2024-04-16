@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품 등록</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+    <link href="/css/admin/adminOrder.css" rel="stylesheet">
+    <script src="/js/admin/adminOrderForm.js"></script>
+    <script
+    src="https://kit.fontawesome.com/f632e65da8.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Croissant+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gasoek+One&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Single+Day&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="orderForm">
+        <div class="logo">
+            <i class="fa-brands fa-accusoft"></i>
+            <a href="#">Copang</a>
+        </div>
+        <h3>상품 등록</h3>
+        <form class="layout" action="/admin/order" method="post" id="adminForm" th:object="${adminDto}" enctype="multipart/form-data">
+            <table>
+                <tr>
+                    <td>카테고리</td>
+                    <td><select name="list">
+                        <option th:each="category : ${T(study.shopping_mall.entity.CategoryType).values()}"
+                                th:value="${category}"
+                                th:text="${category}"></option>
+
+                    </select></td>
+                </tr>
+                    <tr class="bookTab">
+                        <td>ISBN</td>
+                        <td><input type="text" name="isbn" th:value="${adminDto.isbn}"></td>
+                    </tr>
+                    <tr class="bookTab">
+                        <td>작가</td>
+                        <td><input type="text" name="author"></td>
+                    </tr>
+
+                    <tr class="foodTab">
+                        <td>FoodCode</td>
+                        <td><input type="text" name="FoodCode" th:value="${adminDto.FoodCode}"></td>
+                    </tr>
+                    <tr class="foodTab">
+                        <td>FoodBuilder</td>
+                        <td><input type="text" name="FoodBrand"></td>
+                    </tr>
+
+                    <tr class="machineTab">
+                        <td>MachineCode</td>
+                        <td><input type="text" name="MachineCode" th:value="${adminDto.MachineCode}"></td>
+                    </tr>
+                    <tr class="machineTab">
+                        <td>MachineBrand</td>
+                        <td><input type="text" name="MachineBrand"></td>
+                    </tr>
+
+
+                    <tr id="shoesTab" class="shoesTab">
+                        <td>ShoesCode</td>
+                        <td><input type="text" name="ShoesCode" th:value="${adminDto.ShoesCode}"></td>
+                    </tr>
+                    <tr id="shoesTab" class="shoesTab">
+                        <td>brand</td>
+                        <td><input type="text" name="ShoesBrand"></td>
+                    </tr>
+
+                <tr>
+                    <td>상품명</td>
+                    <td><input type="text" name="name" th:field="*{name}"></td>
+                </tr>
+                <tr>
+
+                </tr>
+                <tr>
+                    <td>가격</td>
+                    <td><input type="text" name="price" value="1"></td>
+                </tr>
+                <tr>
+
+                </tr>
+                <tr>
+                    <td>수량</td>
+                    <td><input type="number" name="stockQuantity"value="1"></td>
+                </tr>
+                <tr>
+
+                </tr>
+            </table>
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="fieldError" style="color:red;"></p>
+            <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="fieldError" style="color:red;"></p>
+            <p th:if="${#fields.hasErrors('stockQuantity')}" th:errors="*{stockQuantity}" class="fieldError" style="color:red;"></p>
+            <div class="filebox">
+                <input class="upload-mainname" value="메인 첨부파일" placeholder="메인 첨부파일">
+                <label for="mainFile">파일찾기</label> 
+                <input type="file" id="mainFile" name="mainFile">
+            </div>
+
+            <div class="filebox">
+                <input class="upload-name" value="상세 페이지 첨부파일" placeholder="첨부파일">
+                <label for="file">파일찾기</label> 
+                <input type="file" id="file" name="file"  multiple accept=".gif, .jpg, .png">
+            </div>
+
+        </form>
+        <div class="submit">
+            <button type="submit" onclick="document.getElementById('adminForm').submit();">주문</button>
+        </div>
+
+</body>
+</html>

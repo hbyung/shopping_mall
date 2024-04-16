@@ -1,0 +1,163 @@
+body {
+    margin: 0;
+    padding: 0;
+    margin-top: 100px;
+}
+.orderForm {
+    width: 700px;
+    margin: 0 auto;
+}
+
+.logo {
+    width: 100%;
+    border-bottom: 1px solid #000;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+}
+
+.logo i {
+    color: #2E9AFE;
+    font-size: 30px;
+}
+
+.logo a {
+    text-decoration: none;
+    font-size: 30px;
+    color: #000;
+    font-family: "Croissant One", serif;
+}
+
+h3{
+    width: 100%;
+    font-size: 25px;
+    border-bottom: 3px solid #000;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+.orderForm form {
+    border: 1px solid #E6E6E6;
+    font-family: "Noto Sans KR", sans-serif;
+
+}
+
+.orderForm form table {
+    border-collapse: collapse;
+    width: 100%;
+    height: 250px;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    
+}
+
+.orderForm form table tr, .orderForm form  table td{
+    border: 1px solid #E6E6E6;
+    border-left: 1px solid #fff;
+    
+}
+.orderForm form table tr select {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    text-align: center;
+    font-size: 15px;
+}
+
+.orderForm form table tr td:nth-child(1) {
+    padding-left: 10px;
+    background: #E0F2F7;
+    width: 120px;
+}
+
+.orderForm form table tr td:nth-child(2) {
+
+}
+
+.orderForm form table tr input{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    width: 98%;
+    height: 100%;
+    padding-left: 10px;
+}
+.orderForm form table tr td select option {
+    padding: 10px 0;
+}
+
+.orderForm form table tr input[type=text] {
+    font-size: 15px;
+}
+
+.orderForm form .foodTab,
+.orderForm form .machineTab,
+.orderForm form .shoesTab {
+    display: none;
+}
+
+
+.filebox {
+    padding: 10px 0;
+}
+
+.filebox .upload-name {
+    display: inline-block;
+    height: 30px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 200px;
+    color: #999999;
+}
+
+.filebox .upload-mainname {
+    display: inline-block;
+    height: 30px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 200px;
+    color: #999999;
+}
+
+.filebox label {
+    display: inline-block;
+    padding: 6px 20px;
+    color: #fff;
+    vertical-align: middle;
+    background-color: #999999;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+.orderForm .submit {
+    width: 100%;
+    text-align: center;
+} 
+
+.orderForm .submit button{
+    margin-top: 15px;
+    background: #fff;
+    border: 1px solid #5882FA;
+    color: #5882FA;
+    font-size: 15px;
+    width: 120px;
+    height: 45px;
+}
+
+.orderForm .submit button:hover {
+    background: #5882FA;
+    color: #fff;
+    
+}

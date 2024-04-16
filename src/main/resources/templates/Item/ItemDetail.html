@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="fragments/header :: header">
+</head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구매 상품</title>
+    <link rel="stylesheet" href="/css/item/itemdetail.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+    <script src="/js/item/itemdetail.js"></script>
+    <script
+    src="https://kit.fontawesome.com/f632e65da8.js" crossorigin="anonymous"
+></script>
+
+</head>
+<body>
+<div th:replace="fragments/bodyHeader.html :: bodyHeader" />
+    <main id="order_wrap" >
+            <div class="left">
+                <img th:src="@{${item.mainFilePath}}"  alt="no img">
+            </div>
+            <div class="right">
+                <form method="get" action="/order" id="test1">
+                <div class="top">
+                    <h1 th:text="${#strings.abbreviate(item.name,20)}"></h1>
+                    <p th:text="${item.itemTime}"></p>
+                    <dl>
+                        <dt>판매가격</dt>
+                        <dd class="price" th:text="${item.price+'원'}"></dd>
+                        <dt>적립금</dt>
+                        <dd>1%</dd>
+                        <dt>원산지</dt>
+                        <dd>대한민국</dd>
+                    </dl>
+
+                    <div class="number">
+                        <p class="order_name"> 앵무세 인테리어 포스터</p>
+                        <div class="order_number">
+                                <input type="hidden" name="itemId" id="itemId" th:value="${item.id}">
+                                <input type="hidden" name="totalprice" id="allprice" value="">
+                                <input type="number" name="num" id="num" value="1" min="1">
+                                <input type="text"  id="totalprice" th:value="${item.price}">원
+                        </div>
+                    </div>
+                    <div class="total_price">
+                        <p>총 상품 금액</p>
+                        <p class="result_price" th:text="${item.price}+'원'"></p>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <button type="submit" id="order_btn">주문하기</button>
+                    <button type="button" id="cart_btn" onclick="carts()">장바구니</button>
+                    <button type="button" id="like_btn" onclick="requestPay()">카카오페이</button>
+                </div>
+                </form>
+            </div>
+    </main>
+    <div class="other_menu">
+        <div class="buttonList">
+            <button id="buttonA" onclick="showContent('A')">상품상세</button>
+            <button id="buttonB" onclick="showContent('B')" th:text="'상품평('+${count}+')'"></button>
+            <button id="buttonC" onclick="showContent('C')">상품문의</button>
+            <button id="buttonD" onclick="showContent('D')">배송/교환/반품 안내</button>
+        </div>
+
+        <div id="contentA" th:each="item :${item}">
+        <h2>필수 표기정보</h2>
+        <table>
+            <tr>
+                <td>품명 및 모델명</td>
+                <td>상품 상세페이지 참조</td>
+                <td>KC 인증정보</td>
+                <td>상품 상세페이지 참조</td>
+            </tr>
+            <tr>
+                <td>정격전압, 소비전력</td>
+                <td>상품 상세페이지 참조</td>
+                <td>출시년월</td>
+                <td>상품 상세페이지 참조</td>
+            </tr>
+            <tr>
+                <td>제조자(수입자)</td>
+                <td>상품 상세페이지 참조</td>
+                <td>제조국</td>
+                <td>상품 상세페이지 참조</td>
+            </tr>
+        </table>
+            <ul class="subFile" th:each="allFiles :${allFiles}">
+                <li th:each="totalFiles :${allFiles.multiFiles}"><img th:src="@{${totalFiles.filePath}}"></li>
+            </ul>
+        </div>
+
+        <div id="contentB">
+        <h2>상품평</h2>
+        <div>
+            <textarea name="Product Review" id="Product Review" cols="80" rows="6" placeholder="상품리뷰를 작성해주세요"></textarea>
+            <button type="button" id="submitbutton" onclick="comment()">등록</button>
+        </div>
+        <table th:each="reviewsAll: ${reviewsAll}">
+            <tr>
+                <td th:text="${reviewsAll.Writer}"></td>
+            </tr>
+            <tr>
+                <td th:text="${reviewsAll.WriterReview}"></td>
+            </tr>
+        </table>
+        </div>
+
+        <div id="contentC">
+         <div class="contentCHeader">
+            <h2>상품문의</h2>
+            <form action="/user/request" method="get">
+                <input type="hidden" name="itemId" th:value="${item.id}">
+                <button>문의하기</button>   
+            </form>
+         </div>   
+        <ul>
+            <li>구매한 상품의 취소/ 반품은 구매내역에서 신청 가능합니다.</li>
+            <li>상품문의 및 후기 게시판을 통해 취소나 환불 반품등은 처리되지 않습니다.</li>
+            <li>가격, 판매자, 교환/환불 및 배송 등 해당 삼품 자체와 관련 없는 문의는 고객센터 내 1:1 문의하기를 이용해주세요</li>
+            <li>공개 게시판이므로 전화번호, 메일 주소 등 고객님의 소중한 개인정보는 절대 남기지 말아주세요.</li>
+        </ul>
+        <div class="inquiry" th:each="requestAll : ${inquireList}">
+            <div id="requestDiv" class="requestDiv">
+                <button type="text" id="request" disabled>질문</button>
+                <div>
+                    <table>
+                        <tr>
+                            <td>
+                                <div th:text="${requestAll.Writer}"></div>
+                                <div th:text="${requestAll.InquireDate}"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td th:text="${requestAll.content}"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="productArea" id="productArea">
+                <input type="hidden" name="" id="sessionUsername" th:value="${session.username}">
+                <i class="fa-solid fa-l"></i>
+                <form action="/user/inquireResponse" method="post">
+                    <textarea name="ProductResponse" id="ProductResponse" cols="80" rows="10"></textarea>
+                    <input type="hidden" name="itemId" id="itemId" th:value="${item.id}">
+                    <input type="hidden" name="inquireId" id="inquireId" th:value="${requestAll.id}">
+                    <button type="submit" id="productAreaButton">등록</button>
+                </form>
+            </div>
+            <div id="responseDiv" th:each="response : ${requestAll.responses}">
+                <i class="fa-solid fa-l"></i>
+                <button type="text" id="response" disabled>답변</button>
+                <div>
+                    <table>
+                        <tr>
+                            <td>
+                                <div th:text="${response.Writer}"></div>
+                                <div th:text="${response.inquireResponseDateTime}"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td th:text="${response.content}"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div id="contentD">
+        <h2>배송/교환/반품 안내</h2>
+        <table>
+            <tr>
+                <td>배송방법</td>
+                <td>순차배송</td>
+                <td rowspan="2">배송비</td>
+                <td rowspan="2">
+                    <ul>
+                        <li>무료배송</li>
+                        <li>-도서산간 추가 배송비</li>
+                        <li>-제주 지역: 4.000원</li>
+                        <li>-도서산간 지역: 4.000원</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>배송사</td>
+                <td>cj대한통운</td>
+            </tr>
+            <tr>
+                <td>묶음배송 여부</td>
+                <td colspan="3">가능</td>
+            </tr>
+            <tr>
+                <td>배송기간</td>
+                <td colspan="3">
+                    <ul>
+                        <li>- 도서산간 지역 등은 배송에 3-5일이 더 소요될 수 있습니다.</li>
+                        <li>- 천재지변, 물량 수급 변동 등 예외적인 사유 발생시, 다소 지연될 수 있는 점 양해 부탁드립니다.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        </div>
+    </div>
+</section>
+<div th:replace="fragments/footer :: footer" />
+</body>
+</html>

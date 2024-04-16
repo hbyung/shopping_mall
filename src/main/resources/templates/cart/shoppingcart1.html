@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>장바구니</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+
+    <link href="/css/home.css" rel="stylesheet" />
+    <link href="/css/cart/cart1.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"  crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f632e65da8.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="/css/main.js" defer></script>
+    <script src="/js/cart/cart.js" defer></script>
+</head>
+<body>
+<div th:replace="fragments/bodyHeader.html :: bodyHeader" />
+
+    <section class="cart_section">
+
+        <div class="shopping">
+                <h2><input type="checkbox" value="selectAll" onclick="selectAll(this)">장바구니</h2>
+
+            <div class="shoppingLiST" th:each="cart: ${carts}" th:if="${cart.count} > 0" >
+                <ul>
+                    <li><input type="checkbox" name="shoppingCheck" class="shoppingCheck" checked></li>
+                    <li><img th:src="@{${cart.mainFilePath}}"></li>
+                    <li th:text="${#strings.abbreviate(cart.itemName,10)}"></li>
+                    <li th:text="${cart.itemPrice}"class="price"></li>
+                    <li>
+
+                            <button class="minus_btn">-</button>
+                            <input type="text" class="number" name="number" value="1" th:value="${cart.count}">
+                            <button class="plus_btn">+</button>
+
+                    </li>
+
+                    <li class="final_price" th:text="${cart.itemPrice}+'원'"></li>
+                    <li>
+                        <a  href="#" th:href="'javascript:cancel('+${cart.id}+')'">취소</a>
+                    </li>
+                    <input type="hidden" class="realPrice" name="realPrice" th:value="${cart.itemPrice}">
+                    <input type="hidden" class="itemName" name="itemName" th:value="${cart.itemName}">
+                </ul>
+                    <input type="hidden" name="finalTotalPrice" id="finalTotalPrice">
+            </div>
+            <div class="shoppingLiST"th:if="${carts.size == 0}" >
+                <h3>장바구니를 추가해주세요</h3>
+            </div>
+        </div>
+        <div class="total_price">
+            <h5>예상 주문 금액</h5>
+            <ul>
+                <div>
+                    <li>총상품 금액</li>
+                    <li><div class="finalall_price">원</div></li>
+                </div>
+                <div>
+                    <li>배달료</li>
+                    <li class="delivery">원</li>
+                </div>
+                <div>
+                    <li class="finalTotalPrice">원</li>
+                </div>
+                <div>
+                    <li><a href="javascript:void(0);" onclick="Ordercarts()">결제 하기</a></li>
+                </div>
+            </ul>
+        </div>
+    </section>
+</section>
+<div th:replace="fragments/footer :: footer" />
+<script>
+ function cancel(id) {
+ var form = document.createElement("form");
+ form.setAttribute("method", "post");
+ form.setAttribute("action", "/cart/" + id + "/cancel");
+ document.body.appendChild(form);
+ form.submit();
+ }
+</script>
+</body>
+</html>

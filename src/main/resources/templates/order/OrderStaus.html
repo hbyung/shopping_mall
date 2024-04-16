@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+</head>
+<head>
+    <meta charset="UTF-8">
+    <title>주문내역</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="/js/order/OrderStatus.js"></script>
+    <link href="/css/order/OrderStatus.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="fragments/bodyHeader.html :: bodyHeader" />
+    <div class="searchBox">
+        <form th:object="${orderSearch}">
+            <div>
+                <input type="text" th:field="*{itemName}" class="form-control"
+                       placeholder="상품명"/>
+            </div>
+            <div>
+                <select th:field="*{orderStatus}" class="form-control" id="exampleFormControlSelect1">
+                    <option value="">주문상태</option>
+                    <option th:each=
+                                    "status : ${T(study.shopping_mall.entity.OrderStatus).values()}"
+                            th:value="${status}"
+                            th:text="${status}">option
+                    </option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">검색</button>
+        </form>
+    </div>
+    <h3>주문내역</h3>
+    <div class="orderstatus">
+        <span th:each="item : ${orders}">
+            <h2 th:text="${item.orderDate}"></h2>
+            <div class="orderitemlist">
+                    <div>
+                        <div class="orderitem" th:each="orderItem: ${item.orderItems}">
+                            <img th:src="@{${orderItem.item.mainFilePath}}">
+                            <div class="orderlist">
+                            <div th:text="${#strings.abbreviate(orderItem.item.name,10)}">
+                            </div>
+                            <div>
+                                <p th:text="${orderItem.orderPrice}+'원'"></p>
+                                <p th:text="${orderItem.count}+'개'"></p>
+                                <button class="buttonAdd">장바구니 담기</button>
+                                <input type="hidden" name="itemId" th:value="${orderItem.item.id}">
+                            </div>
+                            </div>
+                        </div>
+                     </div>
+                     <div class="cancel">
+                        <a th:if="${item.status.name() == 'ORDER'}" href="#"
+                           th:href="'javascript:cancel('+${item.id}+')'">취소하기</a>
+                    </div>
+            </div>         
+        </span>
+    </div>
+    <div class="orderstatus" th:if="${orderCount == 0}">
+        <span>
+            <h2></h2>
+            <div class="orderitemlist">
+                <h3>주문 목록이 없습니다.</h3>
+            </div>
+        </span>
+    </div>
+<div th:replace="fragments/footer :: footer" />
+</body>
+</html>

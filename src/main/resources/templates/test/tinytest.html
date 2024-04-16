@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+
+    <!-- summernote -->
+    <script src="../../static/summernote/summernote-lite.js"></script>
+    <script src="../../static/summernote/lang/summernote-ko-KR.js"></script>
+    <link rel="stylesheet" href="../../static/summernote/summernote-lite.css"/>
+</head>
+<th>내 용</th>
+<td>
+    <textarea id="summernote" name="boardContent" style="width:100%;height:350px;resize:none;"></textarea>
+</td>
+
+<p>하이 헬로우</p>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	
+</body>
+</html>
+
+<script>
+    	$('#summernote').summernote({
+		  height: 300,                 // 에디터 높이
+		  minHeight: null,             // 최소 높이
+		  maxHeight: null,             // 최대 높이
+		  focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
+		  lang: "ko-KR",					// 한글 설정
+		  placeholder: '최대 2048자까지 쓸 수 있습니다'	//placeholder 설정
+          
+	});
+</script>
+</html>

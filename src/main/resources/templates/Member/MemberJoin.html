@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge" >
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>로그인</title>
+    <link href="/css/member/memberjoin.css" rel="stylesheet" />
+    <script src="/js/member/memberjoin.js"></script>
+</head>
+<body>
+    <h1><a href="/">Copang</a></h1>
+    <main>
+        <form action="/Member/new" method="post" id="MemberForm" th:object="${MemberDto}">
+            <fieldset>
+            <ul id="login_input">
+                <li>
+                    <span class="id_bg"></span>
+                    <span>
+                        <input type="text" th:field="*{email}" name="user_id" class="fieldError" placeholder=" 아아디(이메일)" />
+                    </span>
+                </li>
+                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError" style="color:red;"></p>
+                <li th:if="!${#fields.hasErrors('email')}" class="id_error">아이디(이메일)을 입력해주세요</li>
+                <li>
+                    <span class="pw_bg"></span>
+                    <span><input type="password" th:field="*{password}"name="user_pw" placeholder=" 비밀번호" /></span>
+                </li>
+                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="fieldError" style="color:red;"></p>
+                <li th:if="!${#fields.hasErrors('password')}" class="pw_error">비밀번호는 8~16자의 영문 대소문자, 숫자, 특수문자로 이루어져야 합니다.</li>
+                <li>
+                    <span class="repw_bg"></span>
+                    <span><input type="password"  th:field="*{repassword}" name="user_repw" placeholder=" 비밀번호 확인" /></span>
+                </li>
+
+                <li>
+                    <span class="name_bg"></span>
+                    <span>
+                        <input type="text" class="user_name" th:field="*{username}" name="user_name" placeholder="이름" />
+                    </span>
+                </li>
+                <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="fieldError" style="color:red;"></p>
+                <li th:if="!${#fields.hasErrors('username')}" class="name_error">이름을 입력해주세요</li>
+                <li>
+                    <span class="phone_bg"></span>
+                    <span><input type="text" class="phone_name"  th:field="*{phone}" name="user_phone" placeholder=" 휴대폰번호" /></span>
+                </li>
+                <p th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="fieldError" style="color:red;"></p>
+                <li th:if="!${#fields.hasErrors('phone')}" class="phone_error">휴대폰번호을 입력해주세요</li>
+            </ul>
+             </fieldset>
+        </form>
+        <a id="login_btn" href="#" onclick="document.getElementById('MemberForm').submit();">동의 하고 가입하기</a>
+        
+    </main>
+    <footer>
+        &copy; Coupang Corp All right reserved.     
+       </footer>
+</body>
+</html>

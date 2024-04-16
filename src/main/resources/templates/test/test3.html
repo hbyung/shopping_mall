@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {border-spacing: 0; border-collapse: collapse;}
+        th, td, tr {border: 1px solid #777;}
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th><input type="checkbox" class="allCheck"></th>
+                <th>번호</th>
+                <th>이름</th>
+                <th>내용</th>
+            </tr>
+        </thead>
+        <tbody class="tableList">
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>1</td>
+                <td>홍길동</td>
+                <td>안뇽하세용~</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>2</td>
+                <td>강감찬</td>
+                <td>안뇽하세용~</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>3</td>
+                <td>홍길자</td>
+                <td>안뇽하세용~</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>4</td>
+                <td>신사임당</td>
+                <td>안뇽하세용~</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>5</td>
+                <td>이순신</td>
+                <td>안뇽하세용~</td>
+            </tr>
+            <tr>
+                <button type="button" class="del">삭제</button>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        var allCheck = document.querySelector(".allCheck");
+        var list = document.querySelectorAll(".check");
+
+        allCheck.onclick = () => {
+            if(allCheck.checked){
+                for(var i = 0 ; i < list.length; i++){
+                    list[i].checked = true;
+                } 
+            } else {
+                for(var i = 0 ; i < list.length; i++){
+                list[i].checked = false;
+                }
+            }
+        };    
+
+        var del =document.querySelector(".del");
+
+        del.onclick = () => {
+
+            for(var i = 0; i < list.length; i++){
+                if(list[i].checked){
+                    list[i].parentElement.parentElement.remove();
+                }
+            }
+        };
+    </script>
+</body>
+</html>

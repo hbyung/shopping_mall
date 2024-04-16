@@ -1,0 +1,314 @@
+
+
+  .categoryFood{
+    width: 1000px;
+    margin: 0 auto;
+  }  
+
+.categoryFood h3 {
+    width: 300px;
+
+}
+
+.categoryFood .h3hearder{
+    display: flex;
+    align-items: center;
+
+}
+
+.categoryFood .h3hearder i {
+    padding-bottom: 10px;
+    margin-right: 10px;
+}
+
+.categoryFood .ReProduct{
+      width: 1000px;
+      margin: 0 auto;
+      padding: 0;
+      border-top: 2px solid #ff7f00;
+      border-bottom: 2px solid #ff7f00;
+      margin-bottom: 50px;
+      display: flex;
+  }
+
+  .categoryFood .ReProduct .repcheader{
+    width: 200px;
+    border-right: 2px solid #ff7f00;
+  }
+
+  .categoryFood .ReProduct .repcheader div {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .categoryFood .ReProduct .repcheader div p {
+    font-size: 30px;
+    color: #ff7f00;
+  }
+
+  .categoryFood .ReProduct .repcheader div a {
+    text-decoration: none;
+    color: #000;
+  }
+
+/*  */
+
+.categoryBook{
+    width: 1000px;
+    margin: 0 auto;
+
+  }  
+
+.categoryBook h3 {
+    width: 300px;
+}
+
+.categoryBook .h3hearder{
+    display: flex;
+    align-items: center;
+}
+
+.categoryBook .h3hearder i {
+    padding-bottom: 10px;
+    margin-right: 10px;
+}
+
+.categoryBook .ReProduct{
+      width: 1000px;
+      margin: 0 auto;
+      padding: 0;
+      border-top: 2px solid #009630;
+      border-bottom: 2px solid #009630;
+      margin-bottom: 50px;
+      display: flex;
+  }
+
+  .categoryBook .ReProduct .repcheader{
+    width: 200px;
+    border-right: 2px solid #009630;
+  }
+
+  .categoryBook .ReProduct .repcheader div {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .categoryBook .ReProduct .repcheader div p {
+    font-size: 30px;
+    color: #009630;
+  }
+
+  .categoryBook .ReProduct .repcheader div a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  /*  */
+
+  .categoryMachine{
+      width: 1000px;
+      margin: 0 auto;
+    }
+
+  .categoryMachine h3 {
+      width: 300px;
+  }
+
+  .categoryMachine .h3hearder{
+      display: flex;
+      align-items: center;
+  }
+
+  .categoryMachine .h3hearder i {
+      padding-bottom: 10px;
+      margin-right: 10px;
+  }
+
+  .categoryMachine .ReProduct{
+        width: 1000px;
+        margin: 0 auto;
+        padding: 0;
+        border-top: 2px solid #009630;
+        border-bottom: 2px solid #009630;
+        margin-bottom: 50px;
+        display: flex;
+    }
+
+    .categoryMachine .ReProduct .repcheader{
+      width: 200px;
+      border-right: 2px solid #009630;
+    }
+
+    .categoryMachine .ReProduct .repcheader div {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .categoryMachine .ReProduct .repcheader div p {
+      font-size: 30px;
+      color: #009630;
+    }
+
+    .categoryMachine .ReProduct .repcheader div a {
+      text-decoration: none;
+      color: #000;
+    }
+
+
+    /*  */
+
+    .categoryShoes{
+        width: 1000px;
+        margin: 0 auto;
+      }
+
+    .categoryShoes h3 {
+        width: 300px;
+    }
+
+    .categoryShoes .h3hearder{
+        display: flex;
+        align-items: center;
+    }
+
+    .categoryShoes .h3hearder i {
+        padding-bottom: 10px;
+        margin-right: 10px;
+    }
+
+    .categoryShoes .ReProduct{
+          width: 1000px;
+          margin: 0 auto;
+          padding: 0;
+          border-top: 2px solid #009630;
+          border-bottom: 2px solid #009630;
+          margin-bottom: 50px;
+          display: flex;
+      }
+
+      .categoryShoes .ReProduct .repcheader{
+        width: 200px;
+        border-right: 2px solid #009630;
+      }
+
+      .categoryShoes .ReProduct .repcheader div {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .categoryShoes .ReProduct .repcheader div p {
+        font-size: 30px;
+        color: #009630;
+      }
+
+      .categoryShoes .ReProduct .repcheader div a {
+        text-decoration: none;
+        color: #000;
+      }
+
+
+.swiper .swiper-wrapper{
+
+      margin: 0;
+      max-height: 660px;
+  }
+
+.swiper {
+    background: #fff;
+    margin: 0;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+.mySwiper .swiper-wrapper   .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    color: #000;
+    height: calc((100% - 30px) / 2) !important;
+    max-height: 300px;
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .fa-truck-fast  {
+    color: #016420;
+  }
+
+  .fa-bowl-food {
+    color: #ff7f00
+  }
+
+  .fa-desktop {
+  }
+
+  .fa-shoe-prints {
+    color: #4169e1;
+  }
+
+.ReProduct .swiper {
+padding-top: 10px;
+}
+
+.swiper img {
+width: 100%;
+}
+
+.swiper a {
+color:#000;
+}
+
+.mySwiper img {
+    height: 210px;
+}
+
+
+  .swiper .swiper-wrapper   .swiper-slide ul li img {
+    width: 200px;
+  }
+
+  .swiper .swiper-wrapper  .swiper-slide ul:hover {
+   box-shadow:0px 3px 5px rgb(220,220,220);
+
+     li button {
+         visibility: visible;
+     }
+
+  }
+
+  .swiper .swiper-wrapper .swiper-slide ul li button {
+    visibility: hidden;
+    width: 70px;
+    border: 0;
+    text-align: center;
+    border-radius: 10%;
+    background: #4169e1;
+    color: #fff;
+
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    visibility: hidden;
+    background-color: #050505;
+    opacity: 0.5;
+    color: #fff !important;
+  }
+  
+  .swiper-button-prev:after,
+  .swiper-button-next:after {
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+  }
+
+  @media screen and (max-width: 700px) {
+
+    .swheader img {
+        width: 600px;
+        height: 300px;
+    }
+}
+
