@@ -149,10 +149,9 @@ public class SecurityConfig {
 
         //경로별 인가 작업
         http
-                .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/**").permitAll()          
-                        // .requestMatchers("/login/**", "/", "/join", "/error","/oauth2/**", "Member/**", "item/**", "ItemList" ).permitAll()
-                        // .requestMatchers("/css/**","/js/**", "/assets/**", "/img/**", "/static/**").permitAll()
+                .authorizeHttpRequests((auth) -> auth       
+                        .requestMatchers("/login/**", "/", "/join", "/error","/oauth2/**", "Member/**", "item/**", "ItemList" ).permitAll()
+                        .requestMatchers("/css/**","/js/**", "/assets/**", "/img/**", "/static/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/cart/**","/order", "/orders", "/orders/**","user/**").hasRole("USER")
                         .anyRequest().authenticated());
