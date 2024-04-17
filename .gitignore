@@ -1,9 +1,12 @@
 
 # IntelliJ project files
+application.yml
+
 .idea
 *.iml
 out
 gen
 .gradle
 build
+
 
