@@ -1,20 +1,18 @@
-// package study.shopping_mall.config;
+package study.shopping_mall.config;
 
-// import lombok.extern.slf4j.Slf4j;
-// import org.springframework.context.annotation.Configuration;
-// import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-// import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-// @Slf4j
-// @Configuration
-// public class WebMvcConfig implements WebMvcConfigurer {
+@Slf4j
+@Configuration
+public class WebMvcConfig implements WebMvcConfigurer {
 
-//     @Override
-//     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//         registry.addResourceHandler("/**")
-//                 .addResourceLocations("file:src/main/resources/static/");
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/img/**")
+                .addResourceLocations("file:home/ubuntu/shopping_mall/src/main/resources/static/img/");
 
-//         registry.addResourceHandler("/css/**")
-//         .addResourceLocations("classpath:/static/css");
-//     }
-// }
+    }
+}
