@@ -42,13 +42,13 @@ public class ItemService {
         String match = "[^\uAC00-\uD7A30-9a-zA-Z]";
         String fileName = uuid +" "+mainFile.getOriginalFilename();
         String mainfileName = fileName.replaceAll(match, " ");
-        File savemainFile = new File(projectPath, mainfileName);
+        File savemainFile = new File(projectPath, mainfileName +".jpg");
         mainFile.transferTo(savemainFile);
 
         for (MultipartFile files : file) {
             String fileNames = files.getOriginalFilename();
             String mainfileNames = uuid +" "+fileNames.replaceAll(match, " ");
-            File saveFile = new File(projectPath, mainfileNames);
+            File saveFile = new File(projectPath, mainfileNames + ".jpg");
             files.transferTo(saveFile);
 
             MultiFiles multi = new MultiFiles(mainfileNames, "/img/" + mainfileNames);
