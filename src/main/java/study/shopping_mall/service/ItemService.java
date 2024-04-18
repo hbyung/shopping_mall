@@ -41,14 +41,14 @@ public class ItemService {
         UUID uuid = UUID.randomUUID();
         String match = "[^\uAC00-\uD7A30-9a-zA-Z]";
         String fileName = uuid +" "+mainFile.getOriginalFilename();
-        String mainfileName = fileName.replaceAll(match, " ");
-        File savemainFile = new File(projectPath, mainfileName +".jpg");
+        String mainfileName = fileName.replaceAll(match, " ")+".jpg";
+        File savemainFile = new File(projectPath, mainfileName);
         mainFile.transferTo(savemainFile);
 
         for (MultipartFile files : file) {
             String fileNames = files.getOriginalFilename();
-            String mainfileNames = uuid +" "+fileNames.replaceAll(match, " ");
-            File saveFile = new File(projectPath, mainfileNames + ".jpg");
+            String mainfileNames = uuid +" "+fileNames.replaceAll(match, " ")+ ".jpg";
+            File saveFile = new File(projectPath, mainfileNames);
             files.transferTo(saveFile);
 
             MultiFiles multi = new MultiFiles(mainfileNames, "/img/" + mainfileNames);
