@@ -33,7 +33,7 @@ public class ItemService {
     public void CreateForm(AdminDto adminDto, MultipartFile mainFile, List<MultipartFile> file, String name, int price, int stockQuantity) throws Exception {
 
         //파일 업로드
-        String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\img";
+        String projectPath = System.getProperty("user.dir") + "/src/main/resources/static/img";
 
         int size = file.size();
         List<MultiFiles> multiFiles = new ArrayList<>();
