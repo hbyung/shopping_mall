@@ -41,7 +41,7 @@
                 <td th:text="${item.itemId}"></td>
                 <td th:text="${item.categoryName}"></td>
                 <td><img th:src="@{${item.mainFilePath}}" alt="no img"></td>
-                <td><a href="#" th:href="@{/user/{id}/detail(id = ${item.itemId})}" th:text="${#strings.abbreviate(item.name,10)}"></a></td>
+                <td><a href="#" th:href="@{/item/{id}/detail(id = ${item.itemId})}" th:text="${#strings.abbreviate(item.name,10)}"></a></td>
                 <td th:text="${item.stockQuantity}"></td>
                 <td th:text="${item.itemTime}"></td>
                 <td><a th:href="'javascript:cancel('+${item.itemId}+')'">

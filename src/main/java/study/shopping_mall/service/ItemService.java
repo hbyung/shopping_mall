@@ -33,7 +33,7 @@ public class ItemService {
     public void CreateForm(AdminDto adminDto, MultipartFile mainFile, List<MultipartFile> file, String name, int price, int stockQuantity) throws Exception {
 
         //파일 업로드
-        String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\img";
+        String projectPath = "/home/ubuntu/shopping_mall/src/main/resources/static/img/";
 
         int size = file.size();
         List<MultiFiles> multiFiles = new ArrayList<>();
@@ -41,13 +41,13 @@ public class ItemService {
         UUID uuid = UUID.randomUUID();
         String match = "[^\uAC00-\uD7A30-9a-zA-Z]";
         String fileName = uuid +" "+mainFile.getOriginalFilename();
-        String mainfileName = fileName.replaceAll(match, " ");
+        String mainfileName = fileName.replaceAll(match, " ")+".jpg";
         File savemainFile = new File(projectPath, mainfileName);
         mainFile.transferTo(savemainFile);
 
         for (MultipartFile files : file) {
             String fileNames = files.getOriginalFilename();
-            String mainfileNames = uuid +" "+fileNames.replaceAll(match, " ");
+            String mainfileNames = uuid +" "+fileNames.replaceAll(match, " ")+ ".jpg";
             File saveFile = new File(projectPath, mainfileNames);
             files.transferTo(saveFile);
 

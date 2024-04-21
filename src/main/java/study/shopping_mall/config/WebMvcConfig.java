@@ -11,7 +11,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/**")
-                .addResourceLocations("file:src/main/resources/static/");
+        registry.addResourceHandler("/img/**")
+                .addResourceLocations("file:/home/ubuntu/shopping_mall/src/main/resources/static/img/");
+
     }
 }
