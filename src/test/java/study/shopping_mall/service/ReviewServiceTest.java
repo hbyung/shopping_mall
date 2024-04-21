@@ -90,7 +90,7 @@ class ReviewServiceTest {
         //when
         itemService.CreateForm(adminDto, mainFile, file ,name, price, stockQuantity);
         Item name1 = itemRepository.findByName("뉴발슬리퍼1");
-        String review = "정말 잘봤습니다.";
+        String review = "정말 잘봤습니다.!";
         String username = "병환";
         long reivewId = reviewService.SaveReivew(name1, review, username);
 
