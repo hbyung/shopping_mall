@@ -40,8 +40,8 @@ public class RestCartController {
         List<CartListDto> cartList = getListDtoList(cartDto);
         member.setAddress(address);
 
-        orderCartService.Order(memberId, cartList);
-        return "redirect:/";
+        Long order = orderCartService.Order(memberId, cartList);
+        return "주문번호 = " +order +" 장바구니 주문완료";
 
     }
 
@@ -49,7 +49,7 @@ public class RestCartController {
     @PostMapping(value = "/v1/cart/{cartId}/cancel")
     public String CartCancel(@PathVariable("cartId") Long cartId) {
         orderCartService.cancelCart(cartId);
-        return "redirect:/cartList";
+        return "주문번호 = " + cartId +" 장바구니 주문취소";
     }
 
 
