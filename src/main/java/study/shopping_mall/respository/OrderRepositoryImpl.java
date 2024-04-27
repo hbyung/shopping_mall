@@ -8,7 +8,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
+import study.shopping_mall.dto.OrderDto;
 import study.shopping_mall.dto.OrderSearch;
+import study.shopping_mall.dto.QOrderDto;
 import study.shopping_mall.entity.*;
 import study.shopping_mall.entity.item.Item;
 import study.shopping_mall.entity.item.QItem;
@@ -48,6 +50,29 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
         long total = results.getTotal();
 
         return new PageImpl<>(content, pageable, total);
+    }
+
+
+    @Override
+    public Page<OrderDto> findOrderRestList(Pageable pageable, OrderSearch orderSearch, String username) {
+
+        QueryResults<OrderDto> results = queryFactory
+                .select(new QOrderDto(order))
+                .from(order)
+                .join(order.orderItems, orderItem)
+                .where(usernameLike(username),statusEq(orderSearch.getOrderStatus()), nameLike(orderSearch.getItemName()))
+                .orderBy(
+                        order.orderDate.desc()
+                )
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetchResults();
+
+        List<OrderDto> content = results.getResults();
+        long total = results.getTotal();
+
+        return new PageImpl<>(content, pageable, total);
+
     }
 
 

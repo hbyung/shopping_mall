@@ -1,4 +1,4 @@
-package study.shopping_mall.RestController;
+package study.shopping_mall.RestApiController;
 
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.ObjectMetadata;

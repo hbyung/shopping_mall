@@ -169,6 +169,10 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
 
             return categoryLike(itemListSearch);
 
+        } else if (itemListSearch.getCategory().equals("전체")) {
+
+            return categoryLike(itemListSearch);
+
         }
 
         return null;
@@ -189,6 +193,9 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
         if (!StringUtils.hasText(itemListSearch.getName())) {
 
             return item.category.name.eq(itemListSearch.getCategory());
+        }else if (itemListSearch.getCategory().equals("전체")) {
+
+            return item.name.contains(itemListSearch.getName());
         }
 
         return item.category.name.eq(itemListSearch.getCategory()).and(item.name.contains(itemListSearch.getName()));

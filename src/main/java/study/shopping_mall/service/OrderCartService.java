@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import study.shopping_mall.dto.CartListDto;
+import study.shopping_mall.dto.RestCarDto;
 import study.shopping_mall.entity.*;
 import study.shopping_mall.entity.item.Item;
 import study.shopping_mall.exception.NotEnoghStockException;
@@ -57,6 +58,11 @@ public class OrderCartService {
 
     public List<OrderCart>  findCartAll(String memberName){
         List<OrderCart>  cartAll = orderCartRepository.findCartAll(memberName);
+        return cartAll;
+    }
+
+    public List<RestCarDto>  findRestCartAll(String memberName){
+        List<RestCarDto>  cartAll = orderCartRepository.findRestCartAll(memberName);
         return cartAll;
     }
 

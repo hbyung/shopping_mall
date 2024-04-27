@@ -112,17 +112,11 @@ public class SecurityConfig {
 
         http
                 .exceptionHandling((handling) ->
-<<<<<<< HEAD
                                 handling
 //                                .authenticationEntryPoint(authenticationEntryPoint())
 //                                .accessDeniedHandler(accessDeniedHandler())
                                         .accessDeniedPage("/errorPage")
-=======
-                        handling
-//                                .authenticationEntryPoint(authenticationEntryPoint())
-//                                .accessDeniedHandler(accessDeniedHandler())
-                                .accessDeniedPage("/errorPage")
->>>>>>> origin/master
+
                 );
 
 
@@ -136,13 +130,11 @@ public class SecurityConfig {
                 .sessionManagement((auth) -> auth
                         .invalidSessionUrl("/")
                         .maximumSessions(2)
-<<<<<<< HEAD
                         .maxSessionsPreventsLogin(false)
                         .expiredUrl("/login")
-=======
                             .maxSessionsPreventsLogin(false)
                              .expiredUrl("/login")
->>>>>>> origin/master
+
                 );
 
         //세션 고정 보안
@@ -153,26 +145,21 @@ public class SecurityConfig {
 
         http
                 .oauth2Login((oauth2) -> oauth2
-<<<<<<< HEAD
                         .loginPage("/login")
                         .userInfoEndpoint((userInfoEndpointConfig ->
                                 userInfoEndpointConfig.userService(customOAuth2UserService)))
-=======
                                 .loginPage("/login")
                                 .userInfoEndpoint((userInfoEndpointConfig ->
                                         userInfoEndpointConfig.userService(customOAuth2UserService)))
->>>>>>> origin/master
                 );
 
 
         //경로별 인가 작업
         http
                 .authorizeHttpRequests((auth) -> auth
-<<<<<<< HEAD
-                        .requestMatchers("/login/**", "/", "/join", "/error","/oauth2/**", "Member/**", "item/**", "ItemList", "/upload" ).permitAll()
-=======
+
+                        .requestMatchers("/login/**", "/", "/join", "/error","/oauth2/**", "Member/**", "item/**", "ItemList", "/upload", "v1/**" ).permitAll()
                         .requestMatchers("/login/**", "/", "/join", "/error","/oauth2/**", "Member/**", "item/**", "ItemList" ).permitAll()
->>>>>>> origin/master
                         .requestMatchers("/css/**","/js/**", "/assets/**", "/img/**", "/static/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/cart/**","/order", "/orders", "/orders/**","user/**").hasRole("USER")

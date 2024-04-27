@@ -58,7 +58,9 @@ public class CartController {
     public String cartList(Model model,@ModelAttribute("ItemListSearch") ItemListSearch itemListSearch){
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         List<OrderCart> carts = orderCartService.findCartAll(username);
+        List<OrderCart> cartAll = orderCartService.findCartAll(username);
         model.addAttribute("carts",carts);
+        model.addAttribute("cartAll", cartAll);
         return "cart/shoppingcart1";
     }
 

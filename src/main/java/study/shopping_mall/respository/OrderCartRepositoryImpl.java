@@ -4,6 +4,8 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import org.springframework.util.StringUtils;
+import study.shopping_mall.dto.QRestCarDto;
+import study.shopping_mall.dto.RestCarDto;
 import study.shopping_mall.entity.OrderCart;
 import study.shopping_mall.entity.QMember;
 import study.shopping_mall.entity.QOrderCart;
@@ -27,6 +29,17 @@ public class OrderCartRepositoryImpl implements OrderCartRepositoryCustom {
     public List<OrderCart> findCartAll(String memberName) {
         List<OrderCart> carts = queryFactory
                 .selectFrom(orderCart)
+                .leftJoin(orderCart.member, member)
+                .where(nameLike(memberName))
+                .fetch();
+        return carts;
+    }
+
+    @Override
+    public List<RestCarDto> findRestCartAll(String memberName) {
+        List<RestCarDto> carts = queryFactory
+                .select(new QRestCarDto(orderCart))
+                .from(orderCart)
                 .leftJoin(orderCart.member, member)
                 .where(nameLike(memberName))
                 .fetch();

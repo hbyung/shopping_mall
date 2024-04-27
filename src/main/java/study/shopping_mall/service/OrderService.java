@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import study.shopping_mall.dto.OrderDto;
 import study.shopping_mall.dto.OrderSearch;
 import study.shopping_mall.entity.Delivery;
 import study.shopping_mall.entity.Member;
@@ -48,6 +49,11 @@ public class OrderService {
     public Page<Order> findList(Pageable pageable, OrderSearch orderSearch, String username){
         Page<Order> orderList = orderRepository.findOrderList(pageable, orderSearch, username);
         return orderList;
+    }
+
+    public Page<OrderDto> findRestList(Pageable pageable, OrderSearch orderSearch, String username){
+        Page<OrderDto> orderRestList = orderRepository.findOrderRestList(pageable, orderSearch, username);
+        return orderRestList;
     }
 
     public void cancelOrder(Long orderId){
