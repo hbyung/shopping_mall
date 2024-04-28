@@ -190,12 +190,10 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
 
 
     private BooleanExpression categoryLike(ItemListSearch itemListSearch) {
-        if (!StringUtils.hasText(itemListSearch.getName())) {
-
-            return item.category.name.eq(itemListSearch.getCategory());
-        }else if (itemListSearch.getCategory().equals("전체")) {
-
+        if (itemListSearch.getCategory().equals("전체")) {
             return item.name.contains(itemListSearch.getName());
+        }else if (!StringUtils.hasText(itemListSearch.getName())) {
+            return item.category.name.eq(itemListSearch.getCategory());
         }
 
         return item.category.name.eq(itemListSearch.getCategory()).and(item.name.contains(itemListSearch.getName()));
