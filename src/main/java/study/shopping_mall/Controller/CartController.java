@@ -87,9 +87,7 @@ public class CartController {
         List<CartListDto> cart = new ArrayList<>();
 
         for (int i = 0; i < cartDto.getItemName().size(); i++){
-            String name = cartDto.getItemName().get(i);
-            OrderCart orderCart = orderCartService.findByitemName(name);
-            CartListDto cartListDto = new CartListDto(orderCart.getItemName(), orderCart.getItemPrice(), orderCart.getCount());
+            CartListDto cartListDto = new CartListDto(cartDto.getItemName().get(i), cartDto.getItemPrice().get(i), cartDto.getNumber().get(i));
             cart.add(cartListDto);
         }
         return cart;
