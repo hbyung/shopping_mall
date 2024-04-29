@@ -88,6 +88,7 @@ public class ItemController {
     @GetMapping(value = "/item/{id}/detail")
     public String ItemDetail(@ModelAttribute("ItemListSearch")ItemListSearch itemListSearch,@PathVariable("id")Long ItemId, Model model, HttpSession session){
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        session.setAttribute(username, "username");
         System.out.println("username = " + username);
         Item id = itemService.findById(ItemId);
         List<Item> multiFilesById = itemService.findMultiFilesById(ItemId);
