@@ -56,5 +56,5 @@
 
 [git clone](https://github.com/hbyung/shopping_mall.git)
 
-[velog](https://velog.io/@god0478/posts)
+[개발 velog](https://velog.io/@god0478/posts)
 
