@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded', function() {
     document.getElementById("allprice").value = totalPrice;
     var btn = document.getElementById("requestDiv"); 	
     var con = document.getElementById("productArea"); 	
-    var name = document.getElementById("sessionUsername").value;
+    var name = $("#sessionUsername").val();
 
     if(name == 'admin'){
         $(".requestDiv").on('click',function(){
