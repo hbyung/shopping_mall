@@ -79,7 +79,7 @@ public class OrderController {
     @GetMapping("/orders")
     public String orderList(Pageable pageable, @ModelAttribute("orderSearch") OrderSearch orderSearch, Model model,
                             @ModelAttribute("ItemListSearch") ItemListSearch ItemListSearch, HttpSession session) {
-        String username = (String) session.getAttribute("username");
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
         session.setAttribute("username",username);
         Page<Order> orders = orderService.findList(pageable, orderSearch, username);
 

@@ -73,7 +73,7 @@ public class CartController {
 
     //장바구니 목록
     @GetMapping("/cartList")
-    public String cartList(Model model, @ModelAttribute("ItemListSearch") ItemListSearch itemListSearch, HttpSession session){
+    public String cartList(HttpSession session, Model model, @ModelAttribute("ItemListSearch") ItemListSearch itemListSearch){
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         session.setAttribute("username",username);
         List<OrderCart> carts = orderCartService.findCartAll(username);
