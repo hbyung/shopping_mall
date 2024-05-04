@@ -58,7 +58,7 @@ public class AdminController {
         String Dtoname = adminDto.getName();
         String match = "[^\uAC00-\uD7A30-9a-zA-Z]";
         String name = Dtoname.replaceAll(match, " ");
-
+        
         int stockQuantity = adminDto.getStockQuantity();
 
         itemService.CreateForm(adminDto, mainFile, file,name, price, stockQuantity);

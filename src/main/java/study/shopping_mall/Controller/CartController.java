@@ -101,7 +101,7 @@ public class CartController {
         model.addAttribute("member", member);
         model.addAttribute("finalTotalPrice", finalTotalPrice);
 
-        return "/cart/CartOrderForm";
+        return "cart/CartOrderForm";
     }
 
     private List<CartListDto> getListDtoList(CartDto cartDto) {
