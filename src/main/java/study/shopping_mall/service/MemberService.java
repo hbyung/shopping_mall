@@ -48,6 +48,17 @@ public class MemberService {
         return member;
     }
 
+    public Member findByName(String name){
+        Member member = memberRepository.findByName(name);
+        return member;
+    }
+
+    public Member findByEmail(String email){
+        Member member = memberRepository.findByEmail(email);
+        return member;
+    }
+
+
     public Member findById(long id){
         Member member = memberRepository.findById(id);
         return member;

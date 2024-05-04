@@ -7,9 +7,9 @@ import java.util.List;
 
 @Getter @Setter
 public class CartDto {
+    private List<Long> cartId;
     private List<String> itemName;
     private List<Integer> itemPrice;
     private List<Integer> number;
-
 
 }

@@ -80,6 +80,7 @@ function selectAll(selectAll)  {
 
 function Ordercarts() {
     console.log("실행");
+    let cartId = [];
     let itemName= [];
     let realPrice= [];
     let number= [];
@@ -87,6 +88,7 @@ function Ordercarts() {
 
     	$(".shoppingLiST").each(function(index, element){
     		if($(element).find(".shoppingCheck").is(":checked") === true){	//체크여부
+            cartId.push(parseInt($(element).find(".cartId").val()));
             itemName.push($(element).find(".itemName").val());
             console.log(itemName);
             realPrice.push(parseInt($(element).find(".realPrice").val()));
@@ -104,6 +106,12 @@ function Ordercarts() {
          hiddenField.setAttribute("type", "hidden");
          hiddenField.setAttribute("name", "itemName");
          hiddenField.setAttribute("value", itemName);
+         form.appendChild(hiddenField);
+
+         hiddenField = document.createElement("input");
+         hiddenField.setAttribute("type", "hidden");
+         hiddenField.setAttribute("name", "cartId");
+         hiddenField.setAttribute("value", cartId);
          form.appendChild(hiddenField);
 
          hiddenField = document.createElement("input");

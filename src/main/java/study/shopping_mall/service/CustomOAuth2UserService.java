@@ -37,13 +37,13 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
         String username = oAuth2Response.getProvider()+" "+ oAuth2Response.getProviderId();
 
-        Member existData = memberRepository.findByUsername(username);
+        Member existData = memberRepository.findByName(oAuth2Response.getName());
 
         String role = null;
 
         if (existData == null) {
             Member member = new Member();
-            member.setUsername(username);
+            member.setUsername(oAuth2Response.getName());
             member.setEmail(oAuth2Response.getEmail());
             member.setName(oAuth2Response.getName());
             member.setRole("ROLE_USER");
@@ -51,7 +51,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
             memberRepository.save(member);
 
             OAuth2MemberDto oAuth2MemberDto = new OAuth2MemberDto();
-            oAuth2MemberDto.setUsername(username);
+            oAuth2MemberDto.setUsername(oAuth2Response.getName());
             oAuth2MemberDto.setName(oAuth2Response.getName());
             oAuth2MemberDto.setRole("ROLE_USER");
 
@@ -64,7 +64,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
             memberRepository.save(existData);
 
             OAuth2MemberDto oAuth2MemberDto = new OAuth2MemberDto();
-            oAuth2MemberDto.setUsername(existData.getUsername());
+            oAuth2MemberDto.setUsername(oAuth2Response.getName());
             oAuth2MemberDto.setName(oAuth2Response.getName());
             oAuth2MemberDto.setRole(existData.getRole());
 

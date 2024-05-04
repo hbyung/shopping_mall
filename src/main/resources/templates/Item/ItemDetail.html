@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="/css/item/itemdetail.css">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-    <script src="/js/item/itemdetail.js"></script>
     <script
     src="https://kit.fontawesome.com/f632e65da8.js" crossorigin="anonymous"
 ></script>
@@ -111,7 +110,7 @@
         <div id="contentC">
          <div class="contentCHeader">
             <h2>상품문의</h2>
-            <form action="/user/request" method="get">
+            <form action="user/request" method="get">
                 <input type="hidden" name="itemId" th:value="${item.id}">
                 <button>문의하기</button>   
             </form>
@@ -140,7 +139,7 @@
                 </div>
             </div>
             <div class="productArea" id="productArea">
-                <input type="hidden" name="" id="sessionUsername" th:value="${session.username}">
+                <input type="hidden" name="" id="sessionUsername" th:value="${username}">
                 <i class="fa-solid fa-l"></i>
                 <form action="/user/inquireResponse" method="post">
                     <textarea name="ProductResponse" id="ProductResponse" cols="80" rows="10"></textarea>
@@ -206,5 +205,6 @@
     </div>
 </section>
 <div th:replace="fragments/footer :: footer" />
+<script src="/js/item/itemdetail.js"></script>
 </body>
 </html>

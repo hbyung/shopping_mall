@@ -1,6 +1,7 @@
 package study.shopping_mall.Controller;
 
 import com.querydsl.core.Tuple;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -37,32 +38,52 @@ public class CartController {
         if (username.equals("anonymousUser")){
 
         }
-        Member name = memberService.findByUsername(username);
-        Item item = itemService.findById(itemId);
-        OrderCart cart_duplication =  orderCartService.findMemberItemId(name.getId(), item.getId());
-        System.out.println("cart_duplication = " + cart_duplication);
-        if (cart_duplication != null){
-            if (name.getId() ==  cart_duplication.getMember().getId()){
-                orderCartService.additionCart(cart_duplication, item, count);
-                return "요청 성공";
-            }
-        }
-        orderCartService.addCart(name, item, count);
 
-        return "요청 성공";
+        if (memberService.findByName(username) == null){
+            Member name = memberService.findByUsername(username);
+            Item item = itemService.findById(itemId);
+            OrderCart cart_duplication =  orderCartService.findMemberItemId(name.getId(), item.getId());
+            System.out.println("cart_duplication = " + cart_duplication);
+            if (cart_duplication != null){
+                if (name.getId() ==  cart_duplication.getMember().getId()){
+                    orderCartService.additionCart(cart_duplication, item, count);
+                    return "요청 성공";
+                }
+            }
+            orderCartService.addCart(name, item, count);
+
+            return "요청 성공";
+
+        }else {
+            Member name = memberService.findByName(username);
+            Item item = itemService.findById(itemId);
+            OrderCart cart_duplication =  orderCartService.findMemberItemId(name.getId(), item.getId());
+            System.out.println("cart_duplication = " + cart_duplication);
+            if (cart_duplication != null){
+                if (name.getId() ==  cart_duplication.getMember().getId()){
+                    orderCartService.additionCart(cart_duplication, item, count);
+                    return "요청 성공";
+                }
+            }
+            orderCartService.addCart(name, item, count);
+            return "요청 성공";
+        }
 
     }
 
     //장바구니 목록
     @GetMapping("/cartList")
-    public String cartList(Model model,@ModelAttribute("ItemListSearch") ItemListSearch itemListSearch){
+    public String cartList(Model model, @ModelAttribute("ItemListSearch") ItemListSearch itemListSearch, HttpSession session){
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        session.setAttribute("username",username);
         List<OrderCart> carts = orderCartService.findCartAll(username);
         List<OrderCart> cartAll = orderCartService.findCartAll(username);
         model.addAttribute("carts",carts);
         model.addAttribute("cartAll", cartAll);
         return "cart/shoppingcart1";
     }
+
+
 
     //장바구니 결제창
     @GetMapping("/cart/Order")
@@ -87,7 +108,7 @@ public class CartController {
         List<CartListDto> cart = new ArrayList<>();
 
         for (int i = 0; i < cartDto.getItemName().size(); i++){
-            CartListDto cartListDto = new CartListDto(cartDto.getItemName().get(i), cartDto.getItemPrice().get(i), cartDto.getNumber().get(i));
+            CartListDto cartListDto = new CartListDto(cartDto.getCartId().get(i), cartDto.getItemName().get(i), cartDto.getItemPrice().get(i), cartDto.getNumber().get(i));
             cart.add(cartListDto);
         }
         return cart;
@@ -114,7 +135,7 @@ public class CartController {
     //장바구니 취소
     @PostMapping(value = "/cart/{cartId}/cancel")
     public String CartCancel(@PathVariable("cartId") Long cartId) {
-        orderCartService.cancelCart(cartId);
+        orderCartService.deleteCart(cartId);
         return "redirect:/cartList";
     }
 }

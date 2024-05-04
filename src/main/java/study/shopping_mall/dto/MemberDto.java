@@ -19,7 +19,6 @@ public class MemberDto {
     @NotEmpty(message = "휴대폰 번호는 필수 입니다.")
     private String phone;
 
-
     @NotEmpty(message = "회원 이메일은 필수 입니다.")
     private String email;
 

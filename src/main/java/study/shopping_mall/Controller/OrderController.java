@@ -80,6 +80,7 @@ public class OrderController {
     public String orderList(Pageable pageable, @ModelAttribute("orderSearch") OrderSearch orderSearch, Model model,
                             @ModelAttribute("ItemListSearch") ItemListSearch ItemListSearch, HttpSession session) {
         String username = (String) session.getAttribute("username");
+        session.setAttribute("username",username);
         Page<Order> orders = orderService.findList(pageable, orderSearch, username);
 
         long orderCount = orders.stream().count();

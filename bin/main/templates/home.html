@@ -4,6 +4,7 @@
 </head>
 
 <head>
+
 </head>
 <body>
 <div th:replace="fragments/bodyHeader.html :: bodyHeader" />
@@ -13,13 +14,13 @@
         <div class="swiper-wrapper">
           <!-- Slides -->
           <div class="swiper-slide">
-            <a href="#"><img src="/img/가나.jpg"></a>
+            <a href="/item/98/detail"><img src="/img/가나.jpg"></a>
           </div>
           <div class="swiper-slide">
-            <img src="/img/밥.jpg">
+            <a href="/item/99/detail"><img src="/img/밥.jpg"></a>
           </div>
           <div class="swiper-slide">
-            <img src="/img/화장지.png">
+            <a href="/item/100/detail"><img src="/img/동원샘물.jpg"></a>
           </div>
       
         </div>
@@ -41,7 +42,7 @@
       <div>
         <ul class="items_list">
             <li th:each="item : ${five}">
-                <a href="#" th:href="@{/user/{id}/detail(id = ${item.id})}">
+                <a href="#" th:href="@{/item/{id}/detail(id = ${item.id})}">
                     <ul>
                         <li><img th:src="@{${item.mainFilePath}}"></li>
                         <li><a href="#" th:href="@{/item/{id}/detail(id = ${item.id})}" th:text="${#strings.abbreviate(item.name,15)}"></a></li>

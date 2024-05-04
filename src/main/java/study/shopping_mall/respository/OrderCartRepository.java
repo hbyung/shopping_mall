@@ -5,5 +5,5 @@ import study.shopping_mall.entity.OrderCart;
 
 public interface OrderCartRepository extends JpaRepository<OrderCart, Long>, OrderCartRepositoryCustom {
     OrderCart findById(long id);
-    OrderCart findByitemName(String itemName);
+    OrderCart findByItemName(String itemName);
 }

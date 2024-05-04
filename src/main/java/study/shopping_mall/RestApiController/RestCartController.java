@@ -59,7 +59,7 @@ public class RestCartController {
         for (int i = 0; i < cartDto.getItemName().size(); i++){
             String name = cartDto.getItemName().get(i);
             OrderCart orderCart = orderCartService.findByitemName(name);
-            CartListDto cartListDto = new CartListDto(orderCart.getItemName(), orderCart.getItemPrice(), orderCart.getCount());
+            CartListDto cartListDto = new CartListDto(orderCart.getId(), orderCart.getItemName(), orderCart.getItemPrice(), orderCart.getCount());
             cart.add(cartListDto);
         }
         return cart;

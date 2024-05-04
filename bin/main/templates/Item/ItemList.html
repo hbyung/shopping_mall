@@ -25,6 +25,7 @@
                         <li class="exprice" th:text="${item.price+'원'}"></li>
                         <li><button class="buttonB"><i class="fa-solid fa-cart-plus"></i></button></li>
                         <input type="hidden" name="itemId" th:value="${item.id}">
+                        <input type="hidden" name="name" th:value="${name}">
                     </ul>
                 </a>
             </li>

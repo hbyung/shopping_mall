@@ -34,6 +34,7 @@ public class OrderCartService {
         orderCart.setItemPrice(item.getPrice());
         orderCart.setItemName(item.getName());
         orderCart.setCount(count);
+        
         orderCartRepository.save(orderCart);
         return orderCart.getId();
     }
@@ -67,7 +68,7 @@ public class OrderCartService {
     }
 
     public OrderCart findByitemName(String itemName){
-        OrderCart byitemName = orderCartRepository.findByitemName(itemName);
+        OrderCart byitemName = orderCartRepository.findByItemName(itemName);
         return byitemName;
     }
 
@@ -89,7 +90,7 @@ public class OrderCartService {
 
         orderRepository.save(order);
         for (CartListDto cartListDto : cartList) {
-            OrderCart name = orderCartRepository.findByitemName(cartListDto.getItemName());
+            OrderCart name = orderCartRepository.findById(cartListDto.getCartId());
             name.removeCartCount();
         }
         return order.getId();
@@ -100,6 +101,12 @@ public class OrderCartService {
         OrderCart orderCart = orderCartRepository.findById(cartId).orElseThrow(IllegalArgumentException::new);
         orderCart.removeCartCount();
     }
+
+    public void deleteCart(Long cartId) {
+        OrderCart orderCart = orderCartRepository.findById(cartId).orElseThrow(IllegalArgumentException::new);
+        orderCartRepository.delete(orderCart);
+    }
+
 
     public OrderCart findMemberItemId(long memberId, Long itemId) {
         return orderCartRepository.findMemberItemId(memberId, itemId);

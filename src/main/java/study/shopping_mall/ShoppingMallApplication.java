@@ -24,4 +24,5 @@ public class ShoppingMallApplication {
 			return new AuditorAwareImpl();
 
 	}
+
 }

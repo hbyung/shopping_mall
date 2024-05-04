@@ -4,7 +4,7 @@ const swiper1 = new Swiper('.swheader', {
    loop: true,
    spaceBetween: 0,
     autoplay:{
-      delay:1500,
+      delay:2000,
       disableOnInteraction: false
     },
 

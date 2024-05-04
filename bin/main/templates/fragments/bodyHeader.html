@@ -3,17 +3,24 @@
 <div class="header" th:fragment="bodyHeader">
     <section class="sidebar">
         <div class="nav-header">
-            <p class="logo">Tivotal</p>
+            <p class="logo">Copang</p>
             <i class="bx bx-menu-alt-right btn-menu"></i>
         </div>
         <ul class="nav-links">
             <li>
-                <a href="#"><i class="bx bx-search search-btn"></i></a>
-                <input type="text" placeholder="search..." />
+                <a href="#" onclick="nav_form()"><i class="bx bx-search search-btn"></i></a>
+                <form id="navForm" action="/SearchItem" method="get">
+                    <input type="text" placeholder="search..." style="color:#000;" name="name"/>
+                </form>
                 <span class="tooltip">Search</span>
+                <script>
+                    function nav_form() {
+                        document.getElementById('navForm').submit();
+                    }
+                </script>
             </li>
             <li>
-                <a href="#">
+                <a href="/">
                     <i class="bx bx-home-alt-2"></i>
                     <span class="title">Home</span>
                 </a>
@@ -21,40 +28,33 @@
             </li>
             <li>
                 <div>
-                    <a href="#" class="link_icon">
-                        <i class="bx bx-phone-call"></i>
-                        <span class="title">Calls</span>
+                    <a href="/ItemList?category=" class="link_icon">
+                        <i class="bx bx-bookmark"></i>
+                        <span class="title">카테고리</span>
                     </a>
                 </div>
                 <span class="tooltip">
                     <ul>
-                        <li><a href="#">음식</a></li>
-                        <li><a href="#">전자제품</a></li>
-                        <li><a href="#">의류</a></li>
-                        <li><a href="#">가전</a></li>
+                        <li><a href="/ItemList?category=책">책</a></li>
+                        <li><a href="/ItemList?category=음식">음식</a></li>
+                        <li><a href="/ItemList?category=전자">전자</a></li>
+                        <li><a href="/ItemList?category=신발">신발</a></li>
                     </ul>
                 </span>
             </li>
             <li>
-                <a href="#">
-                    <i class="bx bx-bookmark"></i>
-                    <span class="title">Bookmarks</span>
+                <a href="/cartList">
+                    <i class="fa-brands fa-opencart"></i>
+                    <span class="title">장바구니</span>
                 </a>
-                <span class="tooltip">Bookmarks</span>
+                <span class="tooltip">장바구니</span>
             </li>
             <li>
-                <a href="#">
-                    <i class="bx bx-wallet-alt"></i>
-                    <span class="title">Wallet</span>
+                <a href="/orders">
+                    <i class="fa-solid fa-person fa-lg"></i>
+                    <span class="title">주문목록</span>
                 </a>
-                <span class="tooltip">Wallet</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="bx bxs-devices"></i>
-                    <span class="title">Devices</span>
-                </a>
-                <span class="tooltip">Devices</span>
+                <span class="tooltip">주문목록</span>
             </li>
             <li>
                 <a href="#">

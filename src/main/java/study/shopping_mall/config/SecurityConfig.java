@@ -132,8 +132,7 @@ public class SecurityConfig {
                         .maximumSessions(2)
                         .maxSessionsPreventsLogin(false)
                         .expiredUrl("/login")
-                            .maxSessionsPreventsLogin(false)
-                             .expiredUrl("/login")
+
 
                 );
 
