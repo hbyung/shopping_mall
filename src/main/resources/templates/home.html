@@ -70,7 +70,7 @@
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
                         <div class="swiper-slide" th:each="item : ${book}">
-                            <a href="#" th:href="@{/user/{id}/detail(id = ${item.id})}">
+                            <a href="#" th:href="@{/item/{id}/detail(id = ${item.id})}">
                                 <ul style="list-style: none;">
                                     <li><img th:src="@{${item.mainFilePath}}"></li>
                                     <li><a href="#" th:href="@{/item/{id}/detail(id = ${item.id})}" th:text="${#strings.abbreviate(item.name,15)}"></a></li>
@@ -103,7 +103,7 @@
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" th:each="item : ${food}">
-                            <a href="#" th:href="@{/user/{id}/detail(id = ${item.id})}">
+                            <a href="#" th:href="@{/item/{id}/detail(id = ${item.id})}">
                                 <ul style="list-style: none;">
                                     <li><img th:src="@{${item.mainFilePath}}"></li>
                                     <li><a href="#" th:href="@{/item/{id}/detail(id = ${item.id})}" th:text="${#strings.abbreviate(item.name,15)}"></a></li>
@@ -137,7 +137,7 @@
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" th:each="item : ${machine}">
-                            <a href="#" th:href="@{/user/{id}/detail(id = ${item.id})}">
+                            <a href="#" th:href="@{/item/{id}/detail(id = ${item.id})}">
                                 <ul style="list-style: none;">
                                     <li><img th:src="@{${item.mainFilePath}}"></li>
                                     <li><a href="#" th:href="@{/item/{id}/detail(id = ${item.id})}" th:text="${#strings.abbreviate(item.name,15)}"></a></li>
@@ -169,7 +169,7 @@
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide" th:each="item : ${shoes}">
-                        <a href="#" th:href="@{/user/{id}/detail(id = ${item.id})}">
+                        <a href="#" th:href="@{/item/{id}/detail(id = ${item.id})}">
                             <ul style="list-style: none;">
                                 <li><img th:src="@{${item.mainFilePath}}"></li>
                                 <li><a href="#" th:href="@{/item/{id}/detail(id = ${item.id})}" th:text="${#strings.abbreviate(item.name,15)}"></a></li>
