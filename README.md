@@ -52,7 +52,7 @@
 
 ## 5. 배포 및 링크 
 
-  [EC2 배포](http://copang.n-e.kr/) 
+  [EC2 배포](https://copang.n-e.kr/) 
 
   [git clone](https://github.com/hbyung/shopping_mall.git)
 
