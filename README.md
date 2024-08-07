@@ -13,12 +13,11 @@
 * Spring Boot 3.25
 * Mysql 8.0
 
-
 ## 3. 기술 스택
 
 * Development
   
-<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/JPA-8181F7?style=for-the-badge&logo=spring&logoColor=white">
+<img src="https://img.shields.io/badge/java-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/JPA-8181F7?style=for-the-badge&logo=spring&logoColor=white">
 <img src="https://img.shields.io/badge/QueryDsl-8181F7?style=for-the-badge&logo=spring&logoColor=white">
 <img src="https://img.shields.io/badge/RESTful API-00BFFF?style=for-the-badge&logo=spring&logoColor=white">
 <img src="https://img.shields.io/badge/Spirng Security-31B404?style=for-the-badge&logo=springsecurity&logoColor=white">
@@ -35,7 +34,7 @@
   
 <img src="https://img.shields.io/badge/visualstudio-848484?style=for-the-badge&logo=visualstudiocode&logoColor=white"> <img src="https://img.shields.io/badge/springboot-FA58AC?style=for-the-badge&logo=springboot&logoColor=white">
 <img src="https://img.shields.io/badge/Postman-8258FA?style=for-the-badge&logo=spring&logoColor=white">
-
+<img src="https://img.shields.io/badge/terminus-8258FA?style=for-the-badge&logo=termius&logoColor=white">
 ## 4. 주요 기능
 
 * 카카오 api를 통한 주문 기능
