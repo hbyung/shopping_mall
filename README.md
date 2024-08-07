@@ -24,7 +24,7 @@
 <img src="https://img.shields.io/badge/Spirng Security-31B404?style=for-the-badge&logo=springsecurity&logoColor=white">
 <img src="https://img.shields.io/badge/OAuth2-F3F781?style=for-the-badge&logo=auth0&logoColor=white">
 <img src="https://img.shields.io/badge/docker-8258FA?style=for-the-badge&logo=amazons3&logoColor=white">
-<img src="https://img.shields.io/badge/jenkins-D24939?style=for-the-badge&logo=amazons3&logoColor=white">
+<img src="https://img.shields.io/badge/jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white">
 <img src="https://img.shields.io/badge/sonarqube-8258FA?style=for-the-badge&logo=amazons3&logoColor=white">
 <img src="https://img.shields.io/badge/nginx-8258FA?style=for-the-badge&logo=amazons3&logoColor=white">
 <img src="https://img.shields.io/badge/aws ec2-848484?style=for-the-badge&logo=amazonec2&logoColor=white">
